@@ -65,11 +65,11 @@ Then just call the code like this.
 
 ```objc
 [self.navigationController wlt_pushViewController:viewController
-                               withTransitionAnimator:[WLTransitionFlipAniamtor new]];
+                           withTransitionAnimator:[WLTransitionFlipAniamtor new]];
 ```
 
 Okay, enjoy it now :)
 
-# LICENSE
+# License
 
 WLTransitionKit is released under the MIT license. 
