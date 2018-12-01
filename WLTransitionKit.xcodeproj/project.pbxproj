@@ -1,0 +1,458 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B00ED90321B212540029A673 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B00ED90221B212540029A673 /* AppDelegate.m */; };
+		B00ED90621B212540029A673 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B00ED90521B212540029A673 /* ViewController.m */; };
+		B00ED90921B212540029A673 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B00ED90721B212540029A673 /* Main.storyboard */; };
+		B00ED90B21B212550029A673 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B00ED90A21B212550029A673 /* Assets.xcassets */; };
+		B00ED90E21B212550029A673 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B00ED90C21B212550029A673 /* LaunchScreen.storyboard */; };
+		B00ED91121B212550029A673 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B00ED91021B212550029A673 /* main.m */; };
+		B00ED92921B212640029A673 /* WLNavigationControllerDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B00ED91921B212640029A673 /* WLNavigationControllerDelegate.m */; };
+		B00ED92A21B212640029A673 /* WLTransitionContext.m in Sources */ = {isa = PBXBuildFile; fileRef = B00ED91A21B212640029A673 /* WLTransitionContext.m */; };
+		B00ED92B21B212640029A673 /* UINavigationController+WLTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = B00ED91B21B212640029A673 /* UINavigationController+WLTransition.m */; };
+		B00ED92C21B212640029A673 /* WLTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = B00ED91E21B212640029A673 /* WLTransition.m */; };
+		B00ED92D21B212640029A673 /* WLPercentDrivenInteractiveTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = B00ED92721B212640029A673 /* WLPercentDrivenInteractiveTransition.m */; };
+		B00ED92E21B212640029A673 /* UIViewController+WLTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = B00ED92821B212640029A673 /* UIViewController+WLTransition.m */; };
+		B00ED93221B2154F0029A673 /* WLTransitionFlipAniamtor.m in Sources */ = {isa = PBXBuildFile; fileRef = B00ED93121B2154F0029A673 /* WLTransitionFlipAniamtor.m */; };
+		B00ED93521B2181F0029A673 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B00ED93421B2181F0029A673 /* SecondViewController.m */; };
+		B00ED93C21B255A20029A673 /* WLViewControllerTransitioningDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B00ED93B21B255A20029A673 /* WLViewControllerTransitioningDelegate.m */; };
+		B00ED94021B26F630029A673 /* ThirdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B00ED93E21B26F630029A673 /* ThirdViewController.m */; };
+		B00ED94121B26F630029A673 /* ThirdViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B00ED93F21B26F630029A673 /* ThirdViewController.xib */; };
+		B049CC2D21B275D700E62058 /* UIViewController+WLTPrivate.m in Sources */ = {isa = PBXBuildFile; fileRef = B049CC2C21B275D700E62058 /* UIViewController+WLTPrivate.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		B00ED8FE21B212540029A673 /* WLTransitionKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WLTransitionKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B00ED90121B212540029A673 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		B00ED90221B212540029A673 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		B00ED90421B212540029A673 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		B00ED90521B212540029A673 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		B00ED90821B212540029A673 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B00ED90A21B212550029A673 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B00ED90D21B212550029A673 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B00ED90F21B212550029A673 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B00ED91021B212550029A673 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		B00ED91821B212640029A673 /* WLTransitionAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLTransitionAnimation.h; sourceTree = "<group>"; };
+		B00ED91921B212640029A673 /* WLNavigationControllerDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WLNavigationControllerDelegate.m; sourceTree = "<group>"; };
+		B00ED91A21B212640029A673 /* WLTransitionContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WLTransitionContext.m; sourceTree = "<group>"; };
+		B00ED91B21B212640029A673 /* UINavigationController+WLTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+WLTransition.m"; sourceTree = "<group>"; };
+		B00ED91C21B212640029A673 /* WLTransitionKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLTransitionKit.h; sourceTree = "<group>"; };
+		B00ED91D21B212640029A673 /* WLTransition+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WLTransition+Private.h"; sourceTree = "<group>"; };
+		B00ED91E21B212640029A673 /* WLTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WLTransition.m; sourceTree = "<group>"; };
+		B00ED91F21B212640029A673 /* UIViewController+WLTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+WLTransition.h"; sourceTree = "<group>"; };
+		B00ED92021B212640029A673 /* WLPercentDrivenInteractiveTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLPercentDrivenInteractiveTransition.h; sourceTree = "<group>"; };
+		B00ED92121B212640029A673 /* WLNavigationControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLNavigationControllerDelegate.h; sourceTree = "<group>"; };
+		B00ED92221B212640029A673 /* WLTransitionContext+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WLTransitionContext+Private.h"; sourceTree = "<group>"; };
+		B00ED92321B212640029A673 /* WLTransitionConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLTransitionConstant.h; sourceTree = "<group>"; };
+		B00ED92421B212640029A673 /* UINavigationController+WLTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+WLTransition.h"; sourceTree = "<group>"; };
+		B00ED92521B212640029A673 /* WLTransitionContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLTransitionContext.h; sourceTree = "<group>"; };
+		B00ED92621B212640029A673 /* WLTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLTransition.h; sourceTree = "<group>"; };
+		B00ED92721B212640029A673 /* WLPercentDrivenInteractiveTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WLPercentDrivenInteractiveTransition.m; sourceTree = "<group>"; };
+		B00ED92821B212640029A673 /* UIViewController+WLTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+WLTransition.m"; sourceTree = "<group>"; };
+		B00ED93021B2154F0029A673 /* WLTransitionFlipAniamtor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLTransitionFlipAniamtor.h; sourceTree = "<group>"; };
+		B00ED93121B2154F0029A673 /* WLTransitionFlipAniamtor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLTransitionFlipAniamtor.m; sourceTree = "<group>"; };
+		B00ED93321B2181F0029A673 /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
+		B00ED93421B2181F0029A673 /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
+		B00ED93A21B255A20029A673 /* WLViewControllerTransitioningDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLViewControllerTransitioningDelegate.h; sourceTree = "<group>"; };
+		B00ED93B21B255A20029A673 /* WLViewControllerTransitioningDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLViewControllerTransitioningDelegate.m; sourceTree = "<group>"; };
+		B00ED93D21B26F630029A673 /* ThirdViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ThirdViewController.h; sourceTree = "<group>"; };
+		B00ED93E21B26F630029A673 /* ThirdViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ThirdViewController.m; sourceTree = "<group>"; };
+		B00ED93F21B26F630029A673 /* ThirdViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ThirdViewController.xib; sourceTree = "<group>"; };
+		B049CC2B21B275D700E62058 /* UIViewController+WLTPrivate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+WLTPrivate.h"; sourceTree = "<group>"; };
+		B049CC2C21B275D700E62058 /* UIViewController+WLTPrivate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+WLTPrivate.m"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B00ED8FB21B212540029A673 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B00ED8F521B212540029A673 = {
+			isa = PBXGroup;
+			children = (
+				B00ED90021B212540029A673 /* WLTransitionKit */,
+				B00ED8FF21B212540029A673 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B00ED8FF21B212540029A673 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B00ED8FE21B212540029A673 /* WLTransitionKit.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B00ED90021B212540029A673 /* WLTransitionKit */ = {
+			isa = PBXGroup;
+			children = (
+				B00ED91721B212640029A673 /* WLTransition */,
+				B00ED90121B212540029A673 /* AppDelegate.h */,
+				B00ED90221B212540029A673 /* AppDelegate.m */,
+				B00ED90421B212540029A673 /* ViewController.h */,
+				B00ED90521B212540029A673 /* ViewController.m */,
+				B00ED93321B2181F0029A673 /* SecondViewController.h */,
+				B00ED93421B2181F0029A673 /* SecondViewController.m */,
+				B00ED93D21B26F630029A673 /* ThirdViewController.h */,
+				B00ED93E21B26F630029A673 /* ThirdViewController.m */,
+				B00ED93F21B26F630029A673 /* ThirdViewController.xib */,
+				B00ED90721B212540029A673 /* Main.storyboard */,
+				B00ED90A21B212550029A673 /* Assets.xcassets */,
+				B00ED90C21B212550029A673 /* LaunchScreen.storyboard */,
+				B00ED90F21B212550029A673 /* Info.plist */,
+				B00ED91021B212550029A673 /* main.m */,
+			);
+			path = WLTransitionKit;
+			sourceTree = "<group>";
+		};
+		B00ED91721B212640029A673 /* WLTransition */ = {
+			isa = PBXGroup;
+			children = (
+				B00ED93621B21A860029A673 /* Core */,
+				B00ED92F21B215150029A673 /* Animators */,
+				B00ED91C21B212640029A673 /* WLTransitionKit.h */,
+			);
+			path = WLTransition;
+			sourceTree = "<group>";
+		};
+		B00ED92F21B215150029A673 /* Animators */ = {
+			isa = PBXGroup;
+			children = (
+				B00ED91821B212640029A673 /* WLTransitionAnimation.h */,
+				B00ED93021B2154F0029A673 /* WLTransitionFlipAniamtor.h */,
+				B00ED93121B2154F0029A673 /* WLTransitionFlipAniamtor.m */,
+			);
+			path = Animators;
+			sourceTree = "<group>";
+		};
+		B00ED93621B21A860029A673 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				B049CC2921B2753C00E62058 /* Public */,
+				B049CC2A21B2754400E62058 /* Private */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		B049CC2921B2753C00E62058 /* Public */ = {
+			isa = PBXGroup;
+			children = (
+				B00ED92421B212640029A673 /* UINavigationController+WLTransition.h */,
+				B00ED91B21B212640029A673 /* UINavigationController+WLTransition.m */,
+				B00ED91F21B212640029A673 /* UIViewController+WLTransition.h */,
+				B00ED92821B212640029A673 /* UIViewController+WLTransition.m */,
+				B00ED92521B212640029A673 /* WLTransitionContext.h */,
+				B00ED91A21B212640029A673 /* WLTransitionContext.m */,
+			);
+			path = Public;
+			sourceTree = "<group>";
+		};
+		B049CC2A21B2754400E62058 /* Private */ = {
+			isa = PBXGroup;
+			children = (
+				B049CC2B21B275D700E62058 /* UIViewController+WLTPrivate.h */,
+				B049CC2C21B275D700E62058 /* UIViewController+WLTPrivate.m */,
+				B00ED92121B212640029A673 /* WLNavigationControllerDelegate.h */,
+				B00ED91921B212640029A673 /* WLNavigationControllerDelegate.m */,
+				B00ED93A21B255A20029A673 /* WLViewControllerTransitioningDelegate.h */,
+				B00ED93B21B255A20029A673 /* WLViewControllerTransitioningDelegate.m */,
+				B00ED92021B212640029A673 /* WLPercentDrivenInteractiveTransition.h */,
+				B00ED92721B212640029A673 /* WLPercentDrivenInteractiveTransition.m */,
+				B00ED92621B212640029A673 /* WLTransition.h */,
+				B00ED91E21B212640029A673 /* WLTransition.m */,
+				B00ED91D21B212640029A673 /* WLTransition+Private.h */,
+				B00ED92321B212640029A673 /* WLTransitionConstant.h */,
+				B00ED92221B212640029A673 /* WLTransitionContext+Private.h */,
+			);
+			path = Private;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B00ED8FD21B212540029A673 /* WLTransitionKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B00ED91421B212550029A673 /* Build configuration list for PBXNativeTarget "WLTransitionKit" */;
+			buildPhases = (
+				B00ED8FA21B212540029A673 /* Sources */,
+				B00ED8FB21B212540029A673 /* Frameworks */,
+				B00ED8FC21B212540029A673 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WLTransitionKit;
+			productName = WLTransitionKit;
+			productReference = B00ED8FE21B212540029A673 /* WLTransitionKit.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B00ED8F621B212540029A673 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0940;
+				ORGANIZATIONNAME = wayne;
+				TargetAttributes = {
+					B00ED8FD21B212540029A673 = {
+						CreatedOnToolsVersion = 9.4.1;
+					};
+				};
+			};
+			buildConfigurationList = B00ED8F921B212540029A673 /* Build configuration list for PBXProject "WLTransitionKit" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B00ED8F521B212540029A673;
+			productRefGroup = B00ED8FF21B212540029A673 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B00ED8FD21B212540029A673 /* WLTransitionKit */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B00ED8FC21B212540029A673 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B00ED90E21B212550029A673 /* LaunchScreen.storyboard in Resources */,
+				B00ED90B21B212550029A673 /* Assets.xcassets in Resources */,
+				B00ED94121B26F630029A673 /* ThirdViewController.xib in Resources */,
+				B00ED90921B212540029A673 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B00ED8FA21B212540029A673 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B00ED93C21B255A20029A673 /* WLViewControllerTransitioningDelegate.m in Sources */,
+				B00ED94021B26F630029A673 /* ThirdViewController.m in Sources */,
+				B00ED90621B212540029A673 /* ViewController.m in Sources */,
+				B00ED92B21B212640029A673 /* UINavigationController+WLTransition.m in Sources */,
+				B00ED92E21B212640029A673 /* UIViewController+WLTransition.m in Sources */,
+				B00ED93221B2154F0029A673 /* WLTransitionFlipAniamtor.m in Sources */,
+				B00ED92A21B212640029A673 /* WLTransitionContext.m in Sources */,
+				B00ED91121B212550029A673 /* main.m in Sources */,
+				B00ED92921B212640029A673 /* WLNavigationControllerDelegate.m in Sources */,
+				B00ED92C21B212640029A673 /* WLTransition.m in Sources */,
+				B00ED93521B2181F0029A673 /* SecondViewController.m in Sources */,
+				B00ED92D21B212640029A673 /* WLPercentDrivenInteractiveTransition.m in Sources */,
+				B049CC2D21B275D700E62058 /* UIViewController+WLTPrivate.m in Sources */,
+				B00ED90321B212540029A673 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		B00ED90721B212540029A673 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B00ED90821B212540029A673 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		B00ED90C21B212550029A673 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B00ED90D21B212550029A673 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B00ED91221B212550029A673 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		B00ED91321B212550029A673 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B00ED91521B212550029A673 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = WLTransitionKit/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.zhwayne.WLTransitionKit;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B00ED91621B212550029A673 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = WLTransitionKit/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.zhwayne.WLTransitionKit;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B00ED8F921B212540029A673 /* Build configuration list for PBXProject "WLTransitionKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B00ED91221B212550029A673 /* Debug */,
+				B00ED91321B212550029A673 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B00ED91421B212550029A673 /* Build configuration list for PBXNativeTarget "WLTransitionKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B00ED91521B212550029A673 /* Debug */,
+				B00ED91621B212550029A673 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B00ED8F621B212540029A673 /* Project object */;
+}
