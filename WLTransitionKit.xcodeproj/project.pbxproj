@@ -99,20 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				B00ED91721B212640029A673 /* WLTransition */,
-				B00ED90121B212540029A673 /* AppDelegate.h */,
-				B00ED90221B212540029A673 /* AppDelegate.m */,
-				B00ED90421B212540029A673 /* ViewController.h */,
-				B00ED90521B212540029A673 /* ViewController.m */,
-				B00ED93321B2181F0029A673 /* SecondViewController.h */,
-				B00ED93421B2181F0029A673 /* SecondViewController.m */,
-				B00ED93D21B26F630029A673 /* ThirdViewController.h */,
-				B00ED93E21B26F630029A673 /* ThirdViewController.m */,
-				B00ED93F21B26F630029A673 /* ThirdViewController.xib */,
-				B00ED90721B212540029A673 /* Main.storyboard */,
-				B00ED90A21B212550029A673 /* Assets.xcassets */,
-				B00ED90C21B212550029A673 /* LaunchScreen.storyboard */,
-				B00ED90F21B212550029A673 /* Info.plist */,
-				B00ED91021B212550029A673 /* main.m */,
+				B049CC2E21B2787200E62058 /* Demo */,
 			);
 			path = WLTransitionKit;
 			sourceTree = "<group>";
@@ -120,9 +107,9 @@
 		B00ED91721B212640029A673 /* WLTransition */ = {
 			isa = PBXGroup;
 			children = (
+				B00ED91C21B212640029A673 /* WLTransitionKit.h */,
 				B00ED93621B21A860029A673 /* Core */,
 				B00ED92F21B215150029A673 /* Animators */,
-				B00ED91C21B212640029A673 /* WLTransitionKit.h */,
 			);
 			path = WLTransition;
 			sourceTree = "<group>";
@@ -155,6 +142,7 @@
 				B00ED92821B212640029A673 /* UIViewController+WLTransition.m */,
 				B00ED92521B212640029A673 /* WLTransitionContext.h */,
 				B00ED91A21B212640029A673 /* WLTransitionContext.m */,
+				B00ED92321B212640029A673 /* WLTransitionConstant.h */,
 			);
 			path = Public;
 			sourceTree = "<group>";
@@ -173,10 +161,30 @@
 				B00ED92621B212640029A673 /* WLTransition.h */,
 				B00ED91E21B212640029A673 /* WLTransition.m */,
 				B00ED91D21B212640029A673 /* WLTransition+Private.h */,
-				B00ED92321B212640029A673 /* WLTransitionConstant.h */,
 				B00ED92221B212640029A673 /* WLTransitionContext+Private.h */,
 			);
 			path = Private;
+			sourceTree = "<group>";
+		};
+		B049CC2E21B2787200E62058 /* Demo */ = {
+			isa = PBXGroup;
+			children = (
+				B00ED90121B212540029A673 /* AppDelegate.h */,
+				B00ED90221B212540029A673 /* AppDelegate.m */,
+				B00ED90421B212540029A673 /* ViewController.h */,
+				B00ED90521B212540029A673 /* ViewController.m */,
+				B00ED93321B2181F0029A673 /* SecondViewController.h */,
+				B00ED93421B2181F0029A673 /* SecondViewController.m */,
+				B00ED93D21B26F630029A673 /* ThirdViewController.h */,
+				B00ED93E21B26F630029A673 /* ThirdViewController.m */,
+				B00ED93F21B26F630029A673 /* ThirdViewController.xib */,
+				B00ED90721B212540029A673 /* Main.storyboard */,
+				B00ED90A21B212550029A673 /* Assets.xcassets */,
+				B00ED90C21B212550029A673 /* LaunchScreen.storyboard */,
+				B00ED90F21B212550029A673 /* Info.plist */,
+				B00ED91021B212550029A673 /* main.m */,
+			);
+			path = Demo;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
