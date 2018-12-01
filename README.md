@@ -11,7 +11,7 @@ You can use WLTransitionKit to customize any transition animation you want. It's
 
 Here is an example to demonstrate how to customize the transition animation.
 
-If we need to implement a flip transition animation. First, we can create an object and then implement the `WLTransitionAnimation` protocol.
+If we want a flip transition animation, we can create an object and then implement the `WLTransitionAnimation` protocol first.
 
 ```objc
 @interface WLTransitionFlipAniamtor : NSObject <WLTransitionAnimation>
