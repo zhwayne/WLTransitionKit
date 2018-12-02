@@ -53,7 +53,7 @@
     else if (self.edge == WLEdgePanGestureEdgeBottom) {
         _percent = -location.y / viewSize.height;
     } else {
-        NSCAssert(NO, @"没有该类型的 edge");
+        NSCAssert(NO, @"No such edge.");
     }
     
     switch (pan.state) {
@@ -87,7 +87,8 @@
 
 
 - (void)_reverseAnimation:(CADisplayLink *)displayLink {
-    // displayLink.duration 表示每一帧的持续时间, 屏幕的刷新频率为 60, duration = 1/60.
+    // displayLink.duration indicates the duration of each frame, the screen refresh rate is 60,
+    // duration = 1/60.
     NSTimeInterval timeOffset = displayLink.duration;
     _percent += (_percent > 0.35 ? timeOffset : -timeOffset);
     [self updateInteractiveTransition:_percent];

@@ -29,9 +29,9 @@
 - (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
     
     if (self.transition.operation == WLTransitionOperationComeOver
-        && self.transition.animator.isEnablePopInteractive
+        && self.transition.animator.isEnableGoBackInteractive
         && !viewController.wlt_isDisablePopInteractive) {
-        // 页面出现以后, 需要设置返回手势
+        // Needs to add pan gesture after the view controller did appear.
         self.transition.interactive.edge = WLEdgePanGestureEdgeLeft;
         self.transition.interactive.operation = WLTransitionOperationGoBack;
         self.transition.interactive.goBackAction = ^{

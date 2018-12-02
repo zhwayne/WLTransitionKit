@@ -12,6 +12,12 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+/**
+ Operation for transition.
+ 
+ - WLTransitionOperationComeOver: Show next view controller.
+ - WLTransitionOperationGoBack: Go back to the previous view controller.
+ */
 typedef NS_ENUM(NSUInteger, WLTransitionOperation) {
     WLTransitionOperationComeOver,
     WLTransitionOperationGoBack,
@@ -20,9 +26,9 @@ typedef NS_ENUM(NSUInteger, WLTransitionOperation) {
 typedef NS_ENUM(NSUInteger, WLEdgePanGestureEdge) {
     WLEdgePanGestureEdgeNone = 0,
     WLEdgePanGestureEdgeLeft,
-    WLEdgePanGestureEdgeRight,  // 未实现
-    WLEdgePanGestureEdgeTop,    // 未实现
-    WLEdgePanGestureEdgeBottom  // 未实现
+    WLEdgePanGestureEdgeRight,  // Not yet implemented.
+    WLEdgePanGestureEdgeTop,    // Not yet implemented.
+    WLEdgePanGestureEdgeBottom  // Not yet implemented.
 };
 
 #endif /* WLTransitionConstant_h */

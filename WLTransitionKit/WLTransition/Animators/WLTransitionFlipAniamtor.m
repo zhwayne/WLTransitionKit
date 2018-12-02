@@ -14,7 +14,7 @@
     return 1;
 }
 
-- (BOOL)isEnablePopInteractive {
+- (BOOL)isEnableGoBackInteractive {
     return YES;
 }
 

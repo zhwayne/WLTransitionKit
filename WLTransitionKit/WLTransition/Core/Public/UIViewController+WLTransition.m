@@ -32,7 +32,7 @@
     [self wlt_viewDidAppear:animate];
     
     if (self.navigationController) {
-        if (self.wlt_navDelegate.transition.animator.isEnablePopInteractive) {
+        if (self.wlt_navDelegate.transition.animator.isEnableGoBackInteractive) {
             self.navigationController.interactivePopGestureRecognizer.enabled = NO;
         } else {
             self.navigationController.interactivePopGestureRecognizer.enabled = !self.wlt_disablePopInteractive;
@@ -59,7 +59,7 @@
     
     viewControllerToPresent.transitioningDelegate = traDelegate;
     [self presentViewController:viewControllerToPresent animated:YES completion:^{
-        if (traDelegate.transition.animator.isEnablePopInteractive) {
+        if (traDelegate.transition.animator.isEnableGoBackInteractive) {
             traDelegate.transition.interactive.edge = WLEdgePanGestureEdgeLeft;
             traDelegate.transition.interactive.operation = WLTransitionOperationGoBack;
             traDelegate.transition.interactive.goBackAction = ^{
