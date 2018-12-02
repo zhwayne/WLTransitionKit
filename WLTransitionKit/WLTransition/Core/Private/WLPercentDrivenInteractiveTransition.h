@@ -21,7 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) void (^comeOverAction)(void) NS_UNAVAILABLE;
 @property (nonatomic, copy) void (^goBackAction)(void);
 
-- (void)attachGestureToViewController:(UIViewController *)viewController;
+- (void)attachGestureToView:(UIView *)view;
 
 @end
 

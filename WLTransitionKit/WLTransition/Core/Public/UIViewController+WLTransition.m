@@ -58,17 +58,7 @@
     viewControllerToPresent.wlt_traDelegate = traDelegate;
     
     viewControllerToPresent.transitioningDelegate = traDelegate;
-    [self presentViewController:viewControllerToPresent animated:YES completion:^{
-        if (traDelegate.transition.animator.isEnableGoBackInteractive) {
-            traDelegate.transition.interactive.edge = WLEdgePanGestureEdgeLeft;
-            traDelegate.transition.interactive.operation = WLTransitionOperationGoBack;
-            traDelegate.transition.interactive.goBackAction = ^{
-                [viewControllerToPresent dismissViewControllerAnimated:YES completion:nil];
-            };
-            [traDelegate.transition.interactive attachGestureToViewController:viewControllerToPresent];
-        }
-        !completion ?: completion();
-    }];
+    [self presentViewController:viewControllerToPresent animated:YES completion:completion];
 }
 
 - (void)wlt_dismissViewControllerAnimated:(BOOL)flag completion:(void (^)(void))completion {

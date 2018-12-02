@@ -9,6 +9,7 @@
 #import "WLTransition.h"
 #import "WLTransition+Private.h"
 #import "WLTransitionContext+Private.h"
+#import "UIViewController+WLTransition.h"
 
 @implementation WLTransition
 @synthesize interactive = _interactive;
@@ -37,9 +38,38 @@
         }
         context.didEndTransition = self.didEndComeOverTransition;
         [self.animator comeOverAnimationWillBegin:context];
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(context.duration * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            // Add pan gesture if needed.
+            [self _addScreenEdgePanGestureRecognizerIfNeededWithContext:context];
+        });
     } else {
         context.didEndTransition = self.didEndGoBackTransition;
         [self.animator goBackAnimationWillBegin:context];
+    }
+}
+
+- (void)_addScreenEdgePanGestureRecognizerIfNeededWithContext:(WLTransitionContext *)context {
+    
+    BOOL presented = context.fromViewController.presentedViewController == context.toViewController;
+    void (^addPanGestureRecognizer)(void) = ^ {
+        self.interactive.edge = WLEdgePanGestureEdgeLeft;
+        self.interactive.operation = WLTransitionOperationGoBack;
+        self.interactive.goBackAction = ^{
+            if (presented) {
+                [context.toViewController dismissViewControllerAnimated:YES completion:nil];
+            } else {
+                [context.fromViewController.navigationController popViewControllerAnimated:YES];
+            }
+        };
+        [self.interactive attachGestureToView:context.containerView];
+    };
+    
+    if (self.animator.isEnableGoBackInteractive) {
+        if (presented == NO && context.toViewController.wlt_isDisablePopInteractive) {
+            return;
+        }
+        addPanGestureRecognizer();
     }
 }
 

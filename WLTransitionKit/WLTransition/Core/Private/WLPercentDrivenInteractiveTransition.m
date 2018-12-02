@@ -18,22 +18,22 @@
 
 @implementation WLPercentDrivenInteractiveTransition
 
-- (void)attachGestureToViewController:(UIViewController *)viewController {
+- (void)attachGestureToView:(UIView *)view {
     
     if (self.edge != WLEdgePanGestureEdgeLeft)
         return;
     
     _pan = [[UIScreenEdgePanGestureRecognizer alloc] initWithTarget:self action:@selector(_handlePan:)];
-    
-    UIRectEdge edgs[] = {
-        [WLEdgePanGestureEdgeLeft]   = UIRectEdgeLeft,
-        [WLEdgePanGestureEdgeRight]  = UIRectEdgeRight,
-        [WLEdgePanGestureEdgeTop]    = UIRectEdgeTop,
-        [WLEdgePanGestureEdgeBottom] = UIRectEdgeBottom
-    };
-    
-    _pan.edges = edgs[self.edge];
-    [viewController.view addGestureRecognizer:_pan];
+
+//    UIRectEdge edgs[] = {
+//        [WLEdgePanGestureEdgeLeft]   = UIRectEdgeLeft,
+//        [WLEdgePanGestureEdgeRight]  = UIRectEdgeRight,
+//        [WLEdgePanGestureEdgeTop]    = UIRectEdgeTop,
+//        [WLEdgePanGestureEdgeBottom] = UIRectEdgeBottom
+//    };
+
+    _pan.edges = UIRectEdgeLeft;
+    [view addGestureRecognizer:_pan];
 }
 
 - (void)_handlePan:(UIScreenEdgePanGestureRecognizer *)pan {

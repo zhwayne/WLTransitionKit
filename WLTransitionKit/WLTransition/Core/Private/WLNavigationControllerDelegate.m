@@ -26,21 +26,6 @@
     return self;
 }
 
-- (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
-    
-    if (self.transition.operation == WLTransitionOperationComeOver
-        && self.transition.animator.isEnableGoBackInteractive
-        && !viewController.wlt_isDisablePopInteractive) {
-        // Needs to add pan gesture after the view controller did appear.
-        self.transition.interactive.edge = WLEdgePanGestureEdgeLeft;
-        self.transition.interactive.operation = WLTransitionOperationGoBack;
-        self.transition.interactive.goBackAction = ^{
-            [navigationController popViewControllerAnimated:YES];
-        };
-        [self.transition.interactive attachGestureToViewController:viewController];
-    }
-}
-
 - (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController
                                   animationControllerForOperation:(UINavigationControllerOperation)operation
                                                fromViewController:(UIViewController *)fromVC
