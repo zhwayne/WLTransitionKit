@@ -7,10 +7,28 @@
 //
 
 #import "ViewController.h"
-#import "SecondViewController.h"
 #import "WLTransitionKit.h"
+#import "ViewController2.h"
 
-@interface ViewController ()
+@interface SelectorWrap : NSObject
+@property (nonatomic) SEL sel;
++ (instancetype)wrapWithSEL:(SEL)sel;
+@end
+
+@implementation SelectorWrap
++ (instancetype)wrapWithSEL:(SEL)sel
+{
+    SelectorWrap *wrap =[SelectorWrap new];
+    wrap.sel = sel;
+    return wrap;
+}
+@end
+
+@interface ViewController () <UITableViewDelegate, UITableViewDataSource>
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+@property (nonatomic) NSArray <NSArray *>*items;
 
 @end
 
@@ -19,22 +37,63 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    _tableView.delegate = self;
+    _tableView.dataSource = self;
+    [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
+    [_tableView reloadData];
+}
+
+- (NSArray *)items {
+    if (!_items) {
+        _items = @[@[@"Flip", [SelectorWrap wrapWithSEL:@selector(_pushWithFlip)]],
+                   @[@"PresentCard", [SelectorWrap wrapWithSEL:@selector(_pushWithPresentCard)]],
+                   ];
+    }
+    
+    return _items;
 }
 
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
 }
 
-- (IBAction)pushToNext:(id)sender {
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.items.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     
-    SecondViewController *viewController = [SecondViewController loadFromMainStoryboard];
+    cell.textLabel.text = [[self.items objectAtIndex:indexPath.row] firstObject];
     
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    SelectorWrap *wrap = [self.items[indexPath.row] lastObject];
+    [self performSelectorOnMainThread:wrap.sel withObject:nil waitUntilDone:NO];
+}
+
+
+#pragma mark -
+
+- (void)_pushWithFlip {
+    ViewController2 *viewController = [ViewController2 loadFromNib];
     [self.navigationController wlt_pushViewController:viewController
-                               withTransitionAnimator:[WLTransitionFlipAniamtor new] completion:^(BOOL wasCancelled) {
-                                   NSLog(@"Did pushed controller: %@", viewController);
-                               }];
+                               withTransitionAnimator:[WLTransitionFlipAniamtor new]];
 }
+
+- (void)_pushWithPresentCard {
+    ViewController2 *viewController = [ViewController2 loadFromNib];
+    viewController.modalPresentationStyle = UIModalPresentationCustom;
+    [self wlt_presentViewController:viewController
+             withTransitionAnimator:[WLTrasitionPresentCardAnimator new]
+                         completion:nil];
+}
+
+
 
 @end

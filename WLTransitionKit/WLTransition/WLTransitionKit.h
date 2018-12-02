@@ -14,8 +14,8 @@
 #import "UINavigationController+WLTransition.h"
 #import "WLTransitionAnimation.h"
 
-
 #import "WLTransitionFlipAniamtor.h"
+#import "WLTrasitionPresentCardAnimator.h"
 
 
 #endif /* WLTransitionKit_h */

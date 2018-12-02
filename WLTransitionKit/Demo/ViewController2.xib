@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ThirdViewController">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ViewController2">
             <connections>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -20,18 +20,21 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zvc-zj-1In">
-                    <rect key="frame" x="160.5" y="318.5" width="54" height="30"/>
-                    <state key="normal" title="Dismiss"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OIa-MT-CI4">
+                    <rect key="frame" x="146.5" y="315.5" width="82" height="36"/>
+                    <fontDescription key="fontDescription" type="system" weight="black" pointSize="20"/>
+                    <state key="normal" title="Go back">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
                     <connections>
-                        <action selector="dismiss:" destination="-1" eventType="touchUpInside" id="5dx-JD-43O"/>
+                        <action selector="goBack:" destination="-1" eventType="touchUpInside" id="bzU-hQ-9qf"/>
                     </connections>
                 </button>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="0.45479580279999998" green="0.7769854357" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
             <constraints>
-                <constraint firstItem="Zvc-zj-1In" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="JAS-5p-qdx"/>
-                <constraint firstItem="Zvc-zj-1In" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="dKV-ht-7Os"/>
+                <constraint firstItem="OIa-MT-CI4" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="mZN-zw-6ye"/>
+                <constraint firstItem="OIa-MT-CI4" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="wk1-Vh-vAq"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
         </view>
