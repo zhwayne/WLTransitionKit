@@ -13,6 +13,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface WLTransitionFlipAniamtor : NSObject <WLTransitionAnimation>
 
+/**
+ Default is black.
+ */
+@property (nonatomic) UIColor *dammingColor;
+
 @end
 
 NS_ASSUME_NONNULL_END

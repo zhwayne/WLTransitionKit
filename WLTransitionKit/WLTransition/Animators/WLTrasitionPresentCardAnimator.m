@@ -16,6 +16,15 @@
 
 @implementation WLTrasitionPresentCardAnimator
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        _dammingOpacity = 0.3;
+    }
+    return self;
+}
+
 - (NSTimeInterval)duration {
     return 0.25;
 }
@@ -60,7 +69,7 @@
                           delay:0
                         options:UIViewAnimationOptionCurveEaseOut
                      animations:^{
-                         self.dimmingView.alpha = 0.3;
+                         self.dimmingView.alpha = 1 - MIN(MAX(0, self.dammingOpacity), 1);
                          toViewFrame.origin.y -= CGRectGetHeight(toViewFrame);
                          context.toView.frame = toViewFrame;
                          
@@ -86,10 +95,10 @@
                          context.toView.layer.transform = CATransform3DIdentity;
                      } completion:^(BOOL finished) {
                          if (!context.wasCancelled) {
+                             [self.dimmingView removeFromSuperview];
                              [context.fromView removeFromSuperview];
                          }
                          [context completeTransition];
-                         [self.dimmingView removeFromSuperview];
                      }];
 }
 

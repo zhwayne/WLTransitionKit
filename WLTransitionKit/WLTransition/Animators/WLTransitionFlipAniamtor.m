@@ -26,6 +26,7 @@
     
     context.fromView.layer.doubleSided = NO;
     context.toView.layer.doubleSided = NO;
+    context.containerView.backgroundColor = self.dammingColor ?: [UIColor blackColor];
     
     [context.containerView addSubview:context.toView];
     context.toView.alpha = 0;

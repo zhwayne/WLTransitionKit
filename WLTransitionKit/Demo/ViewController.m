@@ -36,6 +36,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationItem.title = @"Animators";
     // Do any additional setup after loading the view, typically from a nib.
     _tableView.delegate = self;
     _tableView.dataSource = self;
@@ -46,7 +47,7 @@
 - (NSArray *)items {
     if (!_items) {
         _items = @[@[@"Flip", [SelectorWrap wrapWithSEL:@selector(_pushWithFlip)]],
-                   @[@"PresentCard", [SelectorWrap wrapWithSEL:@selector(_pushWithPresentCard)]],
+                   @[@"Present card", [SelectorWrap wrapWithSEL:@selector(_pushWithPresentCard)]],
                    ];
     }
     
@@ -81,17 +82,17 @@
 #pragma mark -
 
 - (void)_pushWithFlip {
+    WLTransitionFlipAniamtor *animator = [WLTransitionFlipAniamtor new];
+    animator.dammingColor = [UIColor whiteColor];
     ViewController2 *viewController = [ViewController2 loadFromNib];
-    [self.navigationController wlt_pushViewController:viewController
-                               withTransitionAnimator:[WLTransitionFlipAniamtor new]];
+    [self.navigationController wlt_pushViewController:viewController withTransitionAnimator:animator];
 }
 
 - (void)_pushWithPresentCard {
+    WLTrasitionPresentCardAnimator *animator = [WLTrasitionPresentCardAnimator new];
     ViewController2 *viewController = [ViewController2 loadFromNib];
     viewController.modalPresentationStyle = UIModalPresentationCustom;
-    [self wlt_presentViewController:viewController
-             withTransitionAnimator:[WLTrasitionPresentCardAnimator new]
-                         completion:nil];
+    [self wlt_presentViewController:viewController withTransitionAnimator:animator completion:nil];
 }
 
 
