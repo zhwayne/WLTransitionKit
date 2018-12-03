@@ -12,7 +12,7 @@
 @interface WLTrasitionPresentCardAnimator : NSObject <WLTransitionAnimation>
 
 /**
- The value range is [0, 1]. Default is 0.5.
+ The value range is [0, 1]. Default is 0.7.
  */
 @property (nonatomic) CGFloat dammingOpacity;
 

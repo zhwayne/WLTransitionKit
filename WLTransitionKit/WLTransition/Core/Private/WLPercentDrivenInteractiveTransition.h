@@ -18,7 +18,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) WLTransitionOperation operation;
 @property (nonatomic) WLEdgePanGestureEdge edge;
 
-@property (nonatomic, copy) void (^comeOverAction)(void) NS_UNAVAILABLE;
 @property (nonatomic, copy) void (^goBackAction)(void);
 
 - (void)attachGestureToView:(UIView *)view;

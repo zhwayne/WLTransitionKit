@@ -20,13 +20,13 @@
 {
     self = [super init];
     if (self) {
-        _dammingOpacity = 0.5;
+        _dammingOpacity = 0.7;
     }
     return self;
 }
 
 - (NSTimeInterval)duration {
-    return 0.25;
+    return 0.35;
 }
 
 - (CGRect)frameOfPresentedViewInContainerView:(UIView *)containerView {
@@ -65,7 +65,7 @@
                           delay:0
                         options:UIViewAnimationOptionCurveEaseOut
                      animations:^{
-                         self.dimmingView.alpha = 1 - MIN(MAX(0, self.dammingOpacity), 1);
+                         self.dimmingView.alpha = self.dammingOpacity;
                          toViewFrame.origin.y -= CGRectGetHeight(toViewFrame);
                          context.toView.frame = toViewFrame;
                          
@@ -80,7 +80,7 @@
     
     [UIView animateWithDuration:context.duration
                           delay:0
-                        options:UIViewAnimationOptionCurveEaseOut
+                        options:UIViewAnimationOptionCurveEaseIn
                      animations:^{
                          self.dimmingView.alpha = 0;
                          CGRect fromViewFrame = context.fromView.frame;

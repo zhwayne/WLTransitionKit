@@ -38,8 +38,8 @@
 
 - (void)_handlePan:(UIScreenEdgePanGestureRecognizer *)pan {
     
-    CGPoint location = [pan translationInView:pan.view.window];
-    CGSize viewSize = pan.view.window.frame.size;
+    CGPoint location = [pan translationInView:pan.view];
+    CGSize viewSize = pan.view.frame.size;
 
     if (self.edge == WLEdgePanGestureEdgeLeft) {
         _percent = location.x / viewSize.width;
@@ -59,9 +59,7 @@
     switch (pan.state) {
         case UIGestureRecognizerStateBegan:
             _isInteractive = YES;
-            if (_operation == WLTransitionOperationComeOver) {
-                //!_comeOverAction ?: _comeOverAction();
-            } else {
+            if (_operation == WLTransitionOperationGoBack) {
                 !_goBackAction ?: _goBackAction();
             }
             break;
@@ -89,8 +87,8 @@
 - (void)_reverseAnimation:(CADisplayLink *)displayLink {
     // displayLink.duration indicates the duration of each frame, the screen refresh rate is 60,
     // duration = 1/60.
-    NSTimeInterval timeOffset = displayLink.duration;
-    _percent += (_percent > 0.35 ? timeOffset : -timeOffset);
+    NSTimeInterval percentOffset = displayLink.duration / MAX(0.000001, self.duration);
+    _percent += (_percent > 0.3 ? percentOffset : -percentOffset);
     [self updateInteractiveTransition:_percent];
     
     if (_percent >= 1) {
@@ -106,8 +104,5 @@
         _displayLink = nil;
     }
 }
-
-#pragma mark - UIGestureRecognizerDelegate
-
 
 @end

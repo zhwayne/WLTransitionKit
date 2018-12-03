@@ -60,7 +60,7 @@
             if (presented) {
                 [context.toViewController dismissViewControllerAnimated:YES completion:nil];
             } else {
-                [context.fromViewController.navigationController popViewControllerAnimated:YES];
+                [context.toViewController.navigationController popViewControllerAnimated:YES];
             }
         };
         [self.interactive attachGestureToView:context.containerView];
