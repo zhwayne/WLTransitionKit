@@ -34,6 +34,7 @@
     if (self.operation == WLTransitionOperationComeOver) {
         if ([self.animator respondsToSelector:@selector(frameOfPresentedViewInContainerView:)]) {
             CGRect frame = [self.animator frameOfPresentedViewInContainerView:context.containerView];
+            context.toViewController.preferredContentSize = frame.size;
             context.toView.frame = frame;
         }
         context.didEndTransition = self.didEndComeOverTransition;
@@ -65,10 +66,7 @@
         [self.interactive attachGestureToView:context.containerView];
     };
     
-    if (self.animator.isEnableGoBackInteractive) {
-        if (presented == NO && context.toViewController.wlt_isDisablePopInteractive) {
-            return;
-        }
+    if (!context.toViewController.wlt_disableGoBackInteractive) {
         addPanGestureRecognizer();
     }
 }

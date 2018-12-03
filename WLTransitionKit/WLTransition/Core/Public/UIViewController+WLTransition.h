@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UIViewController (WLTransition)
 
-@property (nonatomic, getter=wlt_isDisablePopInteractive) BOOL wlt_disablePopInteractive;
+@property (nonatomic) BOOL wlt_disableGoBackInteractive;
 
 
 - (void)wlt_presentViewController:(UIViewController *)viewControllerToPresent

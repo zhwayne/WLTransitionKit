@@ -2,8 +2,8 @@
 //  WLTrasitionPresentCardAnimator.m
 //  WLTransitionKit
 //
-//  Created by 张尉 on 2018/12/2.
-//  Copyright © 2018 wayne. All rights reserved.
+//  Created by wayne on 2018/12/2.
+//  Copyright © 2018 com.zhwayne. All rights reserved.
 //
 
 #import "WLTrasitionPresentCardAnimator.h"
@@ -20,17 +20,13 @@
 {
     self = [super init];
     if (self) {
-        _dammingOpacity = 0.3;
+        _dammingOpacity = 0.5;
     }
     return self;
 }
 
 - (NSTimeInterval)duration {
     return 0.25;
-}
-
-- (BOOL)isEnableGoBackInteractive {
-    return YES;
 }
 
 - (CGRect)frameOfPresentedViewInContainerView:(UIView *)containerView {

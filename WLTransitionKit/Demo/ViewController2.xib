@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -30,13 +29,24 @@
                         <action selector="goBack:" destination="-1" eventType="touchUpInside" id="bzU-hQ-9qf"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pZe-SE-Jg0">
+                    <rect key="frame" x="134.5" y="363.5" width="106" height="36"/>
+                    <fontDescription key="fontDescription" type="system" weight="black" pointSize="20"/>
+                    <state key="normal" title="Go to Next">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="goToNext:" destination="-1" eventType="touchUpInside" id="xfh-iz-bWe"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="0.45479580279999998" green="0.7769854357" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
             <constraints>
-                <constraint firstItem="OIa-MT-CI4" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="mZN-zw-6ye"/>
-                <constraint firstItem="OIa-MT-CI4" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="wk1-Vh-vAq"/>
+                <constraint firstItem="OIa-MT-CI4" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="1C5-eE-65n"/>
+                <constraint firstItem="pZe-SE-Jg0" firstAttribute="centerX" secondItem="OIa-MT-CI4" secondAttribute="centerX" id="Meo-3K-23p"/>
+                <constraint firstItem="pZe-SE-Jg0" firstAttribute="top" secondItem="OIa-MT-CI4" secondAttribute="bottom" constant="12" id="ZMT-9K-D6X"/>
+                <constraint firstItem="OIa-MT-CI4" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="e1L-YC-rJ0"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
         </view>
     </objects>
 </document>

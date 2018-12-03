@@ -3,7 +3,7 @@
 //  WLTransitionKit
 //
 //  Created by wayne on 2018/12/1.
-//  Copyright © 2018 wayne. All rights reserved.
+//  Copyright © 2018 com.zhwayne. All rights reserved.
 //
 
 #import "WLTransitionFlipAniamtor.h"
@@ -12,14 +12,6 @@
 
 - (NSTimeInterval)duration {
     return 1;
-}
-
-- (BOOL)isEnableGoBackInteractive {
-    return YES;
-}
-
-- (CGRect)frameOfPresentedViewInContainerView:(UIView *)containerView {
-    return containerView.bounds;
 }
 
 - (void)comeOverAnimationWillBegin:(WLTransitionContext *)context {

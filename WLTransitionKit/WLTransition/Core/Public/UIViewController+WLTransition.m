@@ -31,20 +31,20 @@
 - (void)wlt_viewDidAppear:(BOOL)animate {
     [self wlt_viewDidAppear:animate];
     
-    if (self.navigationController) {
-        if (self.wlt_navDelegate.transition.animator.isEnableGoBackInteractive) {
+    if (!self.presentingViewController && self.navigationController) {
+        if (self.wlt_navDelegate) { // Push with animation.
             self.navigationController.interactivePopGestureRecognizer.enabled = NO;
         } else {
-            self.navigationController.interactivePopGestureRecognizer.enabled = !self.wlt_disablePopInteractive;
+            self.navigationController.interactivePopGestureRecognizer.enabled = !self.wlt_disableGoBackInteractive;
         }
     }
 }
 
-- (void)setWlt_disablePopInteractive:(BOOL)wlt_sysPopInteractiveDisable {
-    objc_setAssociatedObject(self, @selector(wlt_isDisablePopInteractive), @(wlt_sysPopInteractiveDisable), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+- (void)setWlt_disableGoBackInteractive:(BOOL)wlt_disableGoBackInteractive {
+    objc_setAssociatedObject(self, @selector(wlt_disableGoBackInteractive), @(wlt_disableGoBackInteractive), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (BOOL)wlt_isDisablePopInteractive {
+- (BOOL)wlt_disableGoBackInteractive {
     return [objc_getAssociatedObject(self, _cmd) boolValue];
 }
 

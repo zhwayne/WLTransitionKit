@@ -2,11 +2,12 @@
 //  ViewController2.m
 //  WLTransitionKit
 //
-//  Created by 张尉 on 2018/12/2.
-//  Copyright © 2018 wayne. All rights reserved.
+//  Created by wayne on 2018/12/2.
+//  Copyright © 2018 com.zhwayne. All rights reserved.
 //
 
 #import "ViewController2.h"
+#import "UIViewController+WLTransition.h"
 
 @interface ViewController2 ()
 
@@ -28,6 +29,19 @@
         [self.navigationController popViewControllerAnimated:YES];
     } else {
         [self dismissViewControllerAnimated:YES completion:nil];
+    }
+}
+
+- (IBAction)goToNext:(id)sender {
+    
+    ViewController2 *viewController = [ViewController2 loadFromNib];
+    
+    if (self.navigationController) {
+        [self.navigationController pushViewController:viewController animated:YES];
+    } else {
+        viewController.modalPresentationStyle = UIModalPresentationCustom;
+        viewController.view.backgroundColor = [UIColor orangeColor];
+        [self presentViewController:viewController animated:YES completion:nil];
     }
 }
 
