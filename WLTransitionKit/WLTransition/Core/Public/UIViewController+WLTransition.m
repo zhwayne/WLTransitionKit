@@ -64,7 +64,10 @@
 - (void)wlt_dismissViewControllerAnimated:(BOOL)flag completion:(void (^)(void))completion {
     self.transitioningDelegate = self.wlt_traDelegate;
     self.wlt_traDelegate.transition.operation = WLTransitionOperationGoBack;
-    [self wlt_dismissViewControllerAnimated:flag completion:completion];
+    [self wlt_dismissViewControllerAnimated:flag completion:^{
+        self.wlt_traDelegate = nil;
+        if (completion) completion();
+    }];
 }
 
 @end

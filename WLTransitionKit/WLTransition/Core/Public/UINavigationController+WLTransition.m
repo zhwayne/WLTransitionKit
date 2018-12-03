@@ -37,7 +37,7 @@
 }
 
 - (void)setWlt_originalDelegate:(id<UINavigationControllerDelegate>)wlt_originalDelegate {
-    objc_setAssociatedObject(self, @selector(wlt_originalDelegate), wlt_originalDelegate, OBJC_ASSOCIATION_ASSIGN);
+    objc_setAssociatedObject(self, @selector(wlt_originalDelegate), wlt_originalDelegate, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 - (id<UINavigationControllerDelegate>)wlt_originalDelegate {
@@ -59,6 +59,7 @@
     tempDelegate.transition.didEndComeOverTransition = ^(BOOL wasCancelled) {
         if (!wasCancelled) {
             weakSelf.delegate = weakSelf.wlt_originalDelegate;
+            weakSelf.wlt_originalDelegate = nil;
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 !completion ?: completion(wasCancelled);
@@ -82,18 +83,21 @@
 }
 
 - (UIViewController *)wlt_popViewControllerAnimated:(BOOL)animated {
-    UIViewController *viewController = self.viewControllers.lastObject;
+    __weak UIViewController *viewController = self.viewControllers.lastObject;
     if (viewController.wlt_navDelegate == nil) {
         return [self wlt_popViewControllerAnimated:animated];
     }
 
     if (self.delegate) {
-        self.wlt_navDelegate = self.delegate ;
+        self.wlt_originalDelegate = self.delegate ;
     }
 
     __weak typeof(self) weakSelf = self;
     viewController.wlt_navDelegate.transition.didEndGoBackTransition = ^(BOOL wasCancelled) {
-        weakSelf.delegate = weakSelf.wlt_navDelegate;
+        weakSelf.delegate = weakSelf.wlt_originalDelegate;
+        weakSelf.wlt_navDelegate = nil;
+        weakSelf.wlt_originalDelegate = nil;
+        viewController.wlt_navDelegate = nil;
     };
     
     self.delegate = viewController.wlt_navDelegate;

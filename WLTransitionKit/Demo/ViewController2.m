@@ -19,6 +19,11 @@
     return [[ViewController2 alloc] initWithNibName:NSStringFromClass(ViewController2.class) bundle:nil];
 }
 
+- (void)dealloc
+{
+    NSLog(@"%s", __FUNCTION__);
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
