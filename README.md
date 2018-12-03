@@ -23,10 +23,6 @@ If we want a flip transition animation, we can create an object and then impleme
     return 1;
 }
 
-- (BOOL)isEnableGoBackInteractive {
-    return YES;
-}
-
 - (void)comeOverAnimationWillBegin:(WLTransitionContext *)context {
     
     context.fromView.layer.doubleSided = NO;
