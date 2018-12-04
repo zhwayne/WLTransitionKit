@@ -18,6 +18,12 @@
 @implementation WLTransitionContext
 @dynamic wasCancelled;
 
+#if DEBUG
+- (void)dealloc {
+    NSLog(@"%s", __FUNCTION__);
+}
+#endif
+
 - (BOOL)wasCancelled {
     return _transition.transitionWasCancelled;
 }
@@ -37,11 +43,14 @@
 }
 
 - (void)completeTransition {
+    BOOL wasCancelled = self.wasCancelled;
     if (_transition) {
-        [_transition completeTransition:!self.wasCancelled];
+        // Once the 'completed transition' method executes, 'wasCancel' will become NO.
+        [_transition completeTransition:!wasCancelled];
     }
     if (_didEndTransition) {
-        _didEndTransition(self.wasCancelled);
+        _didEndTransition(wasCancelled);
+        if (!self.wasCancelled) { _didEndTransition = nil; }
     }
 }
 

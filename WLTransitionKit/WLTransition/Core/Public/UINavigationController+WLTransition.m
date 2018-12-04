@@ -57,10 +57,10 @@
     
     __weak typeof(self) weakSelf = self;
     tempDelegate.transition.didEndComeOverTransition = ^(BOOL wasCancelled) {
+        weakSelf.delegate = weakSelf.wlt_originalDelegate;
+        weakSelf.wlt_originalDelegate = nil;
+        
         if (!wasCancelled) {
-            weakSelf.delegate = weakSelf.wlt_originalDelegate;
-            weakSelf.wlt_originalDelegate = nil;
-            
             dispatch_async(dispatch_get_main_queue(), ^{
                 !completion ?: completion(wasCancelled);
             });
@@ -94,10 +94,12 @@
 
     __weak typeof(self) weakSelf = self;
     viewController.wlt_navDelegate.transition.didEndGoBackTransition = ^(BOOL wasCancelled) {
-        weakSelf.delegate = weakSelf.wlt_originalDelegate;
-        weakSelf.wlt_navDelegate = nil;
-        weakSelf.wlt_originalDelegate = nil;
-        viewController.wlt_navDelegate = nil;
+        if (!wasCancelled) {
+            weakSelf.delegate = weakSelf.wlt_originalDelegate;
+            weakSelf.wlt_navDelegate = nil;
+            weakSelf.wlt_originalDelegate = nil;
+            viewController.wlt_navDelegate = nil;
+        }
     };
     
     self.delegate = viewController.wlt_navDelegate;

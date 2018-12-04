@@ -14,8 +14,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface WLNavigationControllerDelegate : NSObject <UINavigationControllerDelegate>
 
-@property (nonatomic, readonly, nullable) UINavigationController *navigationController;
-
 @property (nonatomic) WLTransition *transition;
 
 @end

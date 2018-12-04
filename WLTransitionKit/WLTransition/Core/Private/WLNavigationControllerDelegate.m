@@ -17,6 +17,12 @@
 
 @implementation WLNavigationControllerDelegate
 
+#if DEBUG
+- (void)dealloc {
+    NSLog(@"%s", __FUNCTION__);
+}
+#endif
+
 - (instancetype)init
 {
     self = [super init];
@@ -30,9 +36,7 @@
                                   animationControllerForOperation:(UINavigationControllerOperation)operation
                                                fromViewController:(UIViewController *)fromVC
                                                  toViewController:(UIViewController *)toVC
-{
-    _navigationController = navigationController;
-    
+{    
     if (operation == UINavigationControllerOperationPush) {
         self.transition.operation = WLTransitionOperationComeOver;
         if (![self.transition.animator respondsToSelector:@selector(comeOverAnimationWillBegin:)]) {

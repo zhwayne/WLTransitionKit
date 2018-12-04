@@ -16,7 +16,14 @@
 
 @end
 
+
 @implementation WLPercentDrivenInteractiveTransition
+
+#if DEBUG
+- (void)dealloc {
+    NSLog(@"%s", __FUNCTION__);
+}
+#endif
 
 - (void)attachGestureToView:(UIView *)view {
     

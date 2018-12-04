@@ -13,13 +13,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface WLTransitionContext : NSObject
 
-@property (nonatomic, readonly, nullable) UIViewController *fromViewController;
-@property (nonatomic, readonly, nullable) UIViewController *toViewController;
+@property (weak, nonatomic, readonly, nullable) UIViewController *fromViewController;
+@property (weak, nonatomic, readonly, nullable) UIViewController *toViewController;
 
-@property (nonatomic, readonly, nullable) UIView *fromView;
-@property (nonatomic, readonly, nullable) UIView *toView;
+@property (weak, nonatomic, readonly, nullable) UIView *fromView;
+@property (weak, nonatomic, readonly, nullable) UIView *toView;
 
-@property (nonatomic, readonly) UIView *containerView;
+@property (weak, nonatomic, readonly) UIView *containerView;
 
 @property (nonatomic, readonly) BOOL wasCancelled;
 

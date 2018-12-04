@@ -62,12 +62,18 @@
 }
 
 - (void)wlt_dismissViewControllerAnimated:(BOOL)flag completion:(void (^)(void))completion {
-    self.transitioningDelegate = self.wlt_traDelegate;
+    __weak typeof(self) weakSelf = self;
     self.wlt_traDelegate.transition.operation = WLTransitionOperationGoBack;
-    [self wlt_dismissViewControllerAnimated:flag completion:^{
-        self.wlt_traDelegate = nil;
-        if (completion) completion();
-    }];
+    self.wlt_traDelegate.transition.didEndGoBackTransition = ^(BOOL wasCancelled) {
+        if (!wasCancelled) {
+            weakSelf.wlt_traDelegate = nil;
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (completion) completion();
+            });
+        }
+    };
+    self.transitioningDelegate = self.wlt_traDelegate;
+    [self wlt_dismissViewControllerAnimated:flag completion:nil];
 }
 
 @end

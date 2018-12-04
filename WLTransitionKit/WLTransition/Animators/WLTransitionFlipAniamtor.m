@@ -10,6 +10,12 @@
 
 @implementation WLTransitionFlipAniamtor
 
+#if DEBUG
+- (void)dealloc {
+    NSLog(@"%s", __FUNCTION__);
+}
+#endif
+
 - (NSTimeInterval)duration {
     return 1;
 }

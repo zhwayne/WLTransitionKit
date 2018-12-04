@@ -14,6 +14,12 @@
 @implementation WLTransition
 @synthesize interactive = _interactive;
 
+#if DEBUG
+- (void)dealloc {
+    NSLog(@"%s", __FUNCTION__);
+}
+#endif
+
 - (instancetype)init {
     self = [super init];
     if (self) {
@@ -28,28 +34,34 @@
 
 - (void)animateTransition:(id<UIViewControllerContextTransitioning>)transitionContext {
     
-    dispatch_async(dispatch_get_main_queue(), ^{
-        WLTransitionContext *context = [[WLTransitionContext alloc] initWithTransition:transitionContext];
-        context.duration = self.animator.duration;
-        
-        if (self.operation == WLTransitionOperationComeOver) {
-            if ([self.animator respondsToSelector:@selector(frameOfPresentedViewInContainerView:)]) {
-                CGRect frame = [self.animator frameOfPresentedViewInContainerView:context.containerView];
-                context.toViewController.preferredContentSize = frame.size;
-                context.toView.frame = frame;
-            }
-            context.didEndTransition = self.didEndComeOverTransition;
-            [self.animator comeOverAnimationWillBegin:context];
-            
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(context.duration * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                // Add pan gesture if needed.
-                [self _addScreenEdgePanGestureRecognizerIfNeededWithContext:context];
-            });
-        } else {
-            context.didEndTransition = self.didEndGoBackTransition;
-            [self.animator goBackAnimationWillBegin:context];
+    WLTransitionContext *context = [[WLTransitionContext alloc] initWithTransition:transitionContext];
+    context.duration = self.animator.duration;
+    
+    if (self.operation == WLTransitionOperationComeOver) {
+        if ([self.animator respondsToSelector:@selector(frameOfPresentedViewInContainerView:)]) {
+            CGRect frame = [self.animator frameOfPresentedViewInContainerView:context.containerView];
+            context.toViewController.preferredContentSize = frame.size;
+            context.toView.frame = frame;
         }
-    });
+        context.didEndTransition = self.didEndComeOverTransition;
+        [self.animator comeOverAnimationWillBegin:context];
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(context.duration * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            // Add pan gesture if needed.
+            [self _addScreenEdgePanGestureRecognizerIfNeededWithContext:context];
+        });
+    } else {
+        context.didEndTransition = self.didEndGoBackTransition;
+        
+        // 
+        if (self.interactive.isInteractive) {
+            [self.animator goBackAnimationWillBegin:context];
+        } else {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.animator goBackAnimationWillBegin:context];
+            });
+        }
+    }
 }
 
 - (void)_addScreenEdgePanGestureRecognizerIfNeededWithContext:(WLTransitionContext *)context {

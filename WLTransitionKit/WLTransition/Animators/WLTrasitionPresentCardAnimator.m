@@ -16,6 +16,12 @@
 
 @implementation WLTrasitionPresentCardAnimator
 
+#if DEBUG
+- (void)dealloc {
+    NSLog(@"%s", __FUNCTION__);
+}
+#endif
+
 - (instancetype)init
 {
     self = [super init];
@@ -26,7 +32,7 @@
 }
 
 - (NSTimeInterval)duration {
-    return 0.35;
+    return 0.3;
 }
 
 - (CGRect)frameOfPresentedViewInContainerView:(UIView *)containerView {
@@ -43,6 +49,9 @@
         _dimmingView = [[UIView alloc] initWithFrame:context.containerView.bounds];
         _dimmingView.backgroundColor = [UIColor blackColor];
         _dimmingView.alpha = 0;
+        
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(_handleTap:)];
+        [_dimmingView addGestureRecognizer:tap];
     } else {
         [_dimmingView removeFromSuperview];
     }

@@ -11,6 +11,12 @@
 
 @implementation WLViewControllerTransitioningDelegate
 
+#if DEBUG
+- (void)dealloc {
+    NSLog(@"%s", __FUNCTION__);
+}
+#endif
+
 - (instancetype)init
 {
     self = [super init];
