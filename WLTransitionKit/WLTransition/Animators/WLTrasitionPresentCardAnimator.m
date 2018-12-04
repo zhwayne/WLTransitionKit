@@ -36,7 +36,8 @@
 }
 
 - (CGRect)frameOfPresentedViewInContainerView:(UIView *)containerView {
-    const CGFloat topOffset = 150;
+    CGFloat topOffset = 24;
+    if (@available(iOS 11.0, *)) { topOffset += containerView.safeAreaInsets.top; }
     CGRect frame = containerView.bounds;
     frame.origin.y += topOffset;
     frame.size.height -= topOffset;
@@ -59,7 +60,7 @@
     context.toView.frame = toViewFrame;
     UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:context.toView.bounds
                                                byRoundingCorners:UIRectCornerTopLeft | UIRectCornerTopRight
-                                                     cornerRadii:CGSizeMake(16, 16)];
+                                                     cornerRadii:CGSizeMake(10, 10)];
     CAShapeLayer *maskLayer = [CAShapeLayer layer];
     maskLayer.path = path.CGPath;
     context.toView.layer.mask = maskLayer;
@@ -75,8 +76,13 @@
                          toViewFrame.origin.y -= CGRectGetHeight(toViewFrame);
                          context.toView.frame = toViewFrame;
                          
-                         context.fromView.layer.cornerRadius = 16;
-                         context.fromView.layer.transform = CATransform3DMakeScale(0.9, 0.9, 1);
+                         context.fromView.layer.cornerRadius = 12;
+                         
+                         CATransform3D t = CATransform3DMakeScale(0.94, 0.94, 1);
+                         if (@available(iOS 11.0, *)) {
+                             t = CATransform3DTranslate(t, 0, context.containerView.safeAreaInsets.top - 20, 0);
+                         }
+                         context.fromView.layer.transform = t;
                      } completion:^(BOOL finished) {
                          [context completeTransition];
                      }];

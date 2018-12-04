@@ -15,10 +15,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic) BOOL wlt_disableGoBackInteractive;
 
-
 - (void)wlt_presentViewController:(UIViewController *)viewControllerToPresent
            withTransitionAnimator:(id<WLTransitionAnimation>)animator
                        completion:(void (^ _Nullable)(void))completion;
+
 
 @end
 

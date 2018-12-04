@@ -77,7 +77,7 @@
                 [context.toViewController.navigationController popViewControllerAnimated:YES];
             }
         };
-        [self.interactive attachGestureToView:context.containerView];
+        [self.interactive attachGestureToView:context.toView];
     };
     
     if (!context.toViewController.wlt_disableGoBackInteractive) {
