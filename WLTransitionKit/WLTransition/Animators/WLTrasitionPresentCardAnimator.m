@@ -49,9 +49,6 @@
         _dimmingView = [[UIView alloc] initWithFrame:context.containerView.bounds];
         _dimmingView.backgroundColor = [UIColor blackColor];
         _dimmingView.alpha = 0;
-        
-        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(_handleTap:)];
-        [_dimmingView addGestureRecognizer:tap];
     } else {
         [_dimmingView removeFromSuperview];
     }
