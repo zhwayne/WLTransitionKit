@@ -18,9 +18,9 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         
-        Method viewWillAppear = class_getInstanceMethod(self.class, @selector(viewDidAppear:));
-        Method wlt_viewWillAppear = class_getInstanceMethod(self.class, @selector(wlt_viewDidAppear:));
-        method_exchangeImplementations(viewWillAppear, wlt_viewWillAppear);
+        Method viewDidAppear = class_getInstanceMethod(self.class, @selector(viewDidAppear:));
+        Method wlt_viewDidAppear = class_getInstanceMethod(self.class, @selector(wlt_viewDidAppear:));
+        method_exchangeImplementations(viewDidAppear, wlt_viewDidAppear);
         
         Method dismissViewControllerAnimated_completion = class_getInstanceMethod(self.class, @selector(dismissViewControllerAnimated:completion:));
         Method wlt_dismissViewControllerAnimated_completion = class_getInstanceMethod(self.class, @selector(wlt_dismissViewControllerAnimated:completion:));
