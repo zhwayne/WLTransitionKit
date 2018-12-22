@@ -16,11 +16,14 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) BOOL isInteractive;
 
 @property (nonatomic) WLTransitionOperation operation;
-@property (nonatomic) WLEdgePanGestureEdge edge;
 
 @property (nonatomic, copy) void (^goBackAction)(void);
 
 - (void)attachGestureToView:(UIView *)view;
+
+- (void)beginPercentDriven;
+- (void)updatePercent:(CGFloat)percent;
+- (void)endPercentDriven;
 
 @end
 

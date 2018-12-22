@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "WLTransitionKit.h"
 #import "ViewController2.h"
+#import "UIGestureRecognizer+BlockSupport.h"
 
 @interface SelectorWrap : NSObject
 @property (nonatomic) SEL sel;
@@ -92,7 +93,23 @@
     WLTrasitionPresentCardAnimator *animator = [WLTrasitionPresentCardAnimator new];
     ViewController2 *viewController = [ViewController2 loadFromNib];
     viewController.modalPresentationStyle = UIModalPresentationCustom;
-    [self wlt_presentViewController:viewController withTransitionAnimator:animator completion:nil];
+    [self wlt_presentViewController:viewController withTransitionAnimator:animator completion:^{
+        
+        UIPanGestureRecognizer *pan = [UIPanGestureRecognizer gestureRecognizerWitHandler:^(UIPanGestureRecognizer *pan) {
+            if (pan.state == UIGestureRecognizerStateBegan) {
+                [viewController wlt_beginInteractiveTransition];
+            } else if (pan.state == UIGestureRecognizerStateChanged) {
+                CGPoint location = [pan translationInView:pan.view];
+                if (fabs(location.y) < 10) return;
+                CGFloat percent = location.y / CGRectGetHeight(pan.view.bounds);
+                [viewController wlt_updateInteractiveTransition:percent];
+            } else {
+                [viewController wlt_endInteractiveTransition];
+            }
+        }];
+
+        [viewController.view addGestureRecognizer:pan];
+    }];
 }
 
 

@@ -21,14 +21,6 @@
 typedef NS_ENUM(NSUInteger, WLTransitionOperation) {
     WLTransitionOperationComeOver,
     WLTransitionOperationGoBack,
-};
-
-typedef NS_ENUM(NSUInteger, WLEdgePanGestureEdge) {
-    WLEdgePanGestureEdgeNone = 0,
-    WLEdgePanGestureEdgeLeft,
-    WLEdgePanGestureEdgeRight,  // Not yet implemented.
-    WLEdgePanGestureEdgeTop,    // Not yet implemented.
-    WLEdgePanGestureEdgeBottom  // Not yet implemented.
-};
+} NS_ENUM_AVAILABLE_IOS(7_0);
 
 #endif /* WLTransitionConstant_h */

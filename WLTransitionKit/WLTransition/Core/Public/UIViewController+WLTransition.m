@@ -77,3 +77,32 @@
 }
 
 @end
+
+
+@implementation UIViewController (WLTGoBackPercentDriven)
+
+- (void)wlt_beginInteractiveTransition {
+    if (self.wlt_navDelegate) {
+        [self.wlt_navDelegate.transition.interactive beginPercentDriven];
+    } else if (self.wlt_traDelegate) {
+        [self.wlt_traDelegate.transition.interactive beginPercentDriven];
+    }
+}
+
+- (void)wlt_updateInteractiveTransition:(CGFloat)percent {
+    if (self.wlt_navDelegate) {
+        [self.wlt_navDelegate.transition.interactive updatePercent:percent];
+    } else if (self.wlt_traDelegate) {
+        [self.wlt_traDelegate.transition.interactive updatePercent:percent];
+    }
+}
+
+- (void)wlt_endInteractiveTransition {
+    if (self.wlt_navDelegate) {
+        [self.wlt_navDelegate.transition.interactive endPercentDriven];
+    } else if (self.wlt_traDelegate) {
+        [self.wlt_traDelegate.transition.interactive endPercentDriven];
+    }
+}
+
+@end

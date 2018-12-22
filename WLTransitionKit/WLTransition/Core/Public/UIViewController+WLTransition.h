@@ -22,4 +22,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+@interface UIViewController (WLTGoBackPercentDriven)
+
+- (void)wlt_beginInteractiveTransition;
+- (void)wlt_updateInteractiveTransition:(CGFloat)percent;
+- (void)wlt_endInteractiveTransition;
+
+@end
+
 NS_ASSUME_NONNULL_END

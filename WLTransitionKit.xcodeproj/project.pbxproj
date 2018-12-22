@@ -25,6 +25,7 @@
 		B049CC3121B3950400E62058 /* WLTrasitionPresentCardAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = B049CC3021B3950400E62058 /* WLTrasitionPresentCardAnimator.m */; };
 		B049CC3521B395BC00E62058 /* ViewController2.m in Sources */ = {isa = PBXBuildFile; fileRef = B049CC3321B395BC00E62058 /* ViewController2.m */; };
 		B049CC3621B395BC00E62058 /* ViewController2.xib in Resources */ = {isa = PBXBuildFile; fileRef = B049CC3421B395BC00E62058 /* ViewController2.xib */; };
+		B09CD8ED21CDEFFB00882F8D /* UIGestureRecognizer+BlockSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = B09CD8EC21CDEFFB00882F8D /* UIGestureRecognizer+BlockSupport.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +67,8 @@
 		B049CC3221B395BC00E62058 /* ViewController2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController2.h; sourceTree = "<group>"; };
 		B049CC3321B395BC00E62058 /* ViewController2.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController2.m; sourceTree = "<group>"; };
 		B049CC3421B395BC00E62058 /* ViewController2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ViewController2.xib; sourceTree = "<group>"; };
+		B09CD8EB21CDEFFB00882F8D /* UIGestureRecognizer+BlockSupport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIGestureRecognizer+BlockSupport.h"; sourceTree = "<group>"; };
+		B09CD8EC21CDEFFB00882F8D /* UIGestureRecognizer+BlockSupport.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIGestureRecognizer+BlockSupport.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,8 +145,6 @@
 				B00ED91B21B212640029A673 /* UINavigationController+WLTransition.m */,
 				B00ED91F21B212640029A673 /* UIViewController+WLTransition.h */,
 				B00ED92821B212640029A673 /* UIViewController+WLTransition.m */,
-				B00ED92521B212640029A673 /* WLTransitionContext.h */,
-				B00ED91A21B212640029A673 /* WLTransitionContext.m */,
 				B00ED92321B212640029A673 /* WLTransitionConstant.h */,
 			);
 			path = Public;
@@ -152,6 +153,8 @@
 		B049CC2A21B2754400E62058 /* Private */ = {
 			isa = PBXGroup;
 			children = (
+				B00ED92521B212640029A673 /* WLTransitionContext.h */,
+				B00ED91A21B212640029A673 /* WLTransitionContext.m */,
 				B049CC2B21B275D700E62058 /* UIViewController+WLTPrivate.h */,
 				B049CC2C21B275D700E62058 /* UIViewController+WLTPrivate.m */,
 				B00ED92121B212640029A673 /* WLNavigationControllerDelegate.h */,
@@ -173,6 +176,8 @@
 			children = (
 				B00ED90121B212540029A673 /* AppDelegate.h */,
 				B00ED90221B212540029A673 /* AppDelegate.m */,
+				B09CD8EB21CDEFFB00882F8D /* UIGestureRecognizer+BlockSupport.h */,
+				B09CD8EC21CDEFFB00882F8D /* UIGestureRecognizer+BlockSupport.m */,
 				B00ED90421B212540029A673 /* ViewController.h */,
 				B00ED90521B212540029A673 /* ViewController.m */,
 				B049CC3221B395BC00E62058 /* ViewController2.h */,
@@ -264,6 +269,7 @@
 				B00ED92E21B212640029A673 /* UIViewController+WLTransition.m in Sources */,
 				B00ED93221B2154F0029A673 /* WLTransitionFlipAniamtor.m in Sources */,
 				B00ED92A21B212640029A673 /* WLTransitionContext.m in Sources */,
+				B09CD8ED21CDEFFB00882F8D /* UIGestureRecognizer+BlockSupport.m in Sources */,
 				B00ED91121B212550029A673 /* main.m in Sources */,
 				B049CC3521B395BC00E62058 /* ViewController2.m in Sources */,
 				B00ED92921B212640029A673 /* WLNavigationControllerDelegate.m in Sources */,

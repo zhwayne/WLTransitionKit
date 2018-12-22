@@ -68,7 +68,6 @@
     
     BOOL presented = context.fromViewController.presentedViewController == context.toViewController;
     void (^addPanGestureRecognizer)(void) = ^ {
-        self.interactive.edge = WLEdgePanGestureEdgeLeft;
         self.interactive.operation = WLTransitionOperationGoBack;
         self.interactive.goBackAction = ^{
             if (presented) {

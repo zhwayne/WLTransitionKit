@@ -8,7 +8,7 @@
 
 #import "WLPercentDrivenInteractiveTransition.h"
 
-@interface WLPercentDrivenInteractiveTransition ()
+@interface WLPercentDrivenInteractiveTransition () <UIGestureRecognizerDelegate>
 
 @property (nonatomic) float percent;
 @property (nonatomic) CADisplayLink *displayLink;
@@ -26,20 +26,10 @@
 #endif
 
 - (void)attachGestureToView:(UIView *)view {
-    
-    if (self.edge != WLEdgePanGestureEdgeLeft)
-        return;
-    
     _pan = [[UIScreenEdgePanGestureRecognizer alloc] initWithTarget:self action:@selector(_handlePan:)];
 
-//    UIRectEdge edgs[] = {
-//        [WLEdgePanGestureEdgeLeft]   = UIRectEdgeLeft,
-//        [WLEdgePanGestureEdgeRight]  = UIRectEdgeRight,
-//        [WLEdgePanGestureEdgeTop]    = UIRectEdgeTop,
-//        [WLEdgePanGestureEdgeBottom] = UIRectEdgeBottom
-//    };
-
     _pan.edges = UIRectEdgeLeft;
+    _pan.delegate = self;
     [view addGestureRecognizer:_pan];
 }
 
@@ -47,51 +37,27 @@
     
     CGPoint location = CGPointApplyAffineTransform([pan translationInView:pan.view.window], pan.view.window.transform);
     CGSize viewSize = CGSizeApplyAffineTransform(pan.view.window.frame.size, pan.view.window.transform);
-
-    if (self.edge == WLEdgePanGestureEdgeLeft) {
-        _percent = location.x / viewSize.width;
-    }
-    else if (self.edge == WLEdgePanGestureEdgeRight) {
-        _percent = -location.x / viewSize.width;
-    }
-    else if (self.edge == WLEdgePanGestureEdgeTop) {
-        _percent = location.y / viewSize.height;
-    }
-    else if (self.edge == WLEdgePanGestureEdgeBottom) {
-        _percent = -location.y / viewSize.height;
-    } else {
-        NSCAssert(NO, @"No such edge.");
-    }
-    
-    NSLog(@"%f", _percent);
+    _percent = location.x / viewSize.width;
     
     switch (pan.state) {
         case UIGestureRecognizerStateBegan:
-            _isInteractive = YES;
-            if (_operation == WLTransitionOperationGoBack) {
-                !_goBackAction ?: _goBackAction();
-            }
+            [self beginPercentDriven];
             break;
             
         case UIGestureRecognizerStateChanged:
-            _isInteractive = YES;
-            [self updateInteractiveTransition:_percent];
+            [self updatePercent:_percent];
             break;
             
         case UIGestureRecognizerStateCancelled:
         case UIGestureRecognizerStateFailed:
         case UIGestureRecognizerStateEnded:
-            _isInteractive = NO;
-            [_displayLink invalidate];
-            _displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(_reverseAnimation:)];
-            [_displayLink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
+            [self endPercentDriven];
             break;
             
         default:
             break;
     }
 }
-
 
 - (void)_reverseAnimation:(CADisplayLink *)displayLink {
     // displayLink.duration indicates the duration of each frame, the screen refresh rate is 60,
@@ -113,5 +79,37 @@
         _displayLink = nil;
     }
 }
+
+#pragma mark -
+
+- (void)beginPercentDriven {
+    _isInteractive = YES;
+    if (_operation == WLTransitionOperationGoBack) {
+        !_goBackAction ?: _goBackAction();
+    }
+}
+
+- (void)updatePercent:(CGFloat)percent {
+    _isInteractive = YES;
+    _percent = percent;
+    [self updateInteractiveTransition:percent];
+}
+
+- (void)endPercentDriven {
+    _isInteractive = NO;
+    [_displayLink invalidate];
+    _displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(_reverseAnimation:)];
+    [_displayLink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
+}
+
+#pragma mark -
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldBeRequiredToFailByGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    return YES;
+}
+
+//- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRequireFailureOfGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+//    return NO;
+//}
 
 @end
