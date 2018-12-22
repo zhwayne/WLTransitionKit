@@ -46,7 +46,7 @@
         context.didEndTransition = self.didEndComeOverTransition;
         [self.animator comeOverAnimationWillBegin:context];
         
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(context.duration * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(context.duration + 0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             // Add pan gesture if needed.
             [self _addScreenEdgePanGestureRecognizerIfNeededWithContext:context];
         });

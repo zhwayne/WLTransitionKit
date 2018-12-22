@@ -45,8 +45,8 @@
 
 - (void)_handlePan:(UIScreenEdgePanGestureRecognizer *)pan {
     
-    CGPoint location = [pan translationInView:pan.view];
-    CGSize viewSize = pan.view.frame.size;
+    CGPoint location = CGPointApplyAffineTransform([pan translationInView:pan.view.window], pan.view.window.transform);
+    CGSize viewSize = CGSizeApplyAffineTransform(pan.view.window.frame.size, pan.view.window.transform);
 
     if (self.edge == WLEdgePanGestureEdgeLeft) {
         _percent = location.x / viewSize.width;
@@ -62,6 +62,8 @@
     } else {
         NSCAssert(NO, @"No such edge.");
     }
+    
+    NSLog(@"%f", _percent);
     
     switch (pan.state) {
         case UIGestureRecognizerStateBegan:
