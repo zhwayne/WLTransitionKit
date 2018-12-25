@@ -21,6 +21,6 @@
 typedef NS_ENUM(NSUInteger, WLTransitionOperation) {
     WLTransitionOperationComeOver,
     WLTransitionOperationGoBack,
-} NS_ENUM_AVAILABLE_IOS(7_0);
+} NS_ENUM_AVAILABLE_IOS(8_0);
 
 #endif /* WLTransitionConstant_h */
