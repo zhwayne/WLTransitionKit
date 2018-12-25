@@ -67,20 +67,17 @@
 - (void)_addScreenEdgePanGestureRecognizerIfNeededWithContext:(WLTransitionContext *)context {
     
     BOOL presented = context.fromViewController.presentedViewController == context.toViewController;
-    void (^addPanGestureRecognizer)(void) = ^ {
-        self.interactive.operation = WLTransitionOperationGoBack;
-        self.interactive.goBackAction = ^{
-            if (presented) {
-                [context.toViewController dismissViewControllerAnimated:YES completion:nil];
-            } else {
-                [context.toViewController.navigationController popViewControllerAnimated:YES];
-            }
-        };
-        [self.interactive attachGestureToView:context.toView];
+    self.interactive.operation = WLTransitionOperationGoBack;
+    self.interactive.goBackAction = ^{
+        if (presented) {
+            [context.toViewController dismissViewControllerAnimated:YES completion:nil];
+        } else {
+            [context.toViewController.navigationController popViewControllerAnimated:YES];
+        }
     };
     
     if (!context.toViewController.wlt_disableGoBackInteractive) {
-        addPanGestureRecognizer();
+        [self.interactive attachGestureToView:context.toView];
     }
 }
 

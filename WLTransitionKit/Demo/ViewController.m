@@ -93,7 +93,7 @@
     WLTrasitionPresentCardAnimator *animator = [WLTrasitionPresentCardAnimator new];
     ViewController2 *viewController = [ViewController2 loadFromNib];
     viewController.modalPresentationStyle = UIModalPresentationCustom;
-    [self wlt_presentViewController:viewController withTransitionAnimator:animator completion:^{
+    [self.navigationController wlt_presentViewController:viewController withTransitionAnimator:animator completion:^{
         
         UIPanGestureRecognizer *pan = [UIPanGestureRecognizer gestureRecognizerWitHandler:^(UIPanGestureRecognizer *pan) {
             if (pan.state == UIGestureRecognizerStateBegan) {

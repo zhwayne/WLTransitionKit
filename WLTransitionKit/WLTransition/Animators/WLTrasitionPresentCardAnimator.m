@@ -48,6 +48,7 @@
     
     if (!_dimmingView) {
         _dimmingView = [[UIView alloc] initWithFrame:context.containerView.bounds];
+        _dimmingView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         _dimmingView.backgroundColor = [UIColor blackColor];
         _dimmingView.alpha = 0;
     } else {
