@@ -31,7 +31,7 @@
 - (void)wlt_viewDidAppear:(BOOL)animate {
     [self wlt_viewDidAppear:animate];
     
-    if (!self.presentingViewController && self.navigationController) {
+    if (!self.presentingViewController && self.navigationController && self.navigationController == self.parentViewController) {
         if (self.wlt_navDelegate) { // Push with animation.
             self.navigationController.interactivePopGestureRecognizer.enabled = NO;
         } else {
