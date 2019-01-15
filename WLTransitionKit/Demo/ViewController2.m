@@ -19,8 +19,11 @@
     return [[ViewController2 alloc] initWithNibName:NSStringFromClass(ViewController2.class) bundle:nil];
 }
 
-- (void)dealloc
-{
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return self.statusBarStyle;
+}
+
+- (void)dealloc {
     NSLog(@"%s", __FUNCTION__);
 }
 

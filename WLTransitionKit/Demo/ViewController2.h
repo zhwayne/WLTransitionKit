@@ -10,6 +10,8 @@
 
 @interface ViewController2 : UIViewController
 
+@property (nonatomic) UIStatusBarStyle statusBarStyle;
+
 + (instancetype)loadFromNib;
 
 @end

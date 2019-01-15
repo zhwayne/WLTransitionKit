@@ -38,6 +38,7 @@
                                                  toViewController:(UIViewController *)toVC
 {    
     if (operation == UINavigationControllerOperationPush) {
+        
         self.transition.operation = WLTransitionOperationComeOver;
         if (![self.transition.animator respondsToSelector:@selector(comeOverAnimationWillBegin:)]) {
             return nil;

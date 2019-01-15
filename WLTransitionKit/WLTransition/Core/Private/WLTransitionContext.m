@@ -35,8 +35,8 @@
         _transition = transition;
         _fromViewController = [transition viewControllerForKey:UITransitionContextFromViewControllerKey];
         _toViewController = [transition viewControllerForKey:UITransitionContextToViewControllerKey];
-        _fromView = _fromViewController.view;
-        _toView = _toViewController.view;
+        _fromView = [transition viewForKey:UITransitionContextFromViewKey] ?: _fromViewController.view;
+        _toView = [transition viewForKey:UITransitionContextToViewKey] ?: _toViewController.view;
         _containerView = [transition containerView];
     }
     return self;

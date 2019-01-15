@@ -94,8 +94,8 @@
 
     __weak typeof(self) weakSelf = self;
     viewController.wlt_navDelegate.transition.didEndGoBackTransition = ^(BOOL wasCancelled) {
+        weakSelf.delegate = weakSelf.wlt_originalDelegate;
         if (!wasCancelled) {
-            weakSelf.delegate = weakSelf.wlt_originalDelegate;
             weakSelf.wlt_navDelegate = nil;
             weakSelf.wlt_originalDelegate = nil;
             viewController.wlt_navDelegate = nil;

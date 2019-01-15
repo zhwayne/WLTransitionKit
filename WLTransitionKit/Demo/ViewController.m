@@ -35,6 +35,10 @@
 
 @implementation ViewController
 
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleDefault;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"Animators";
@@ -44,6 +48,8 @@
     [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
     [_tableView reloadData];
 }
+
+#pragma mark -
 
 - (NSArray *)items {
     if (!_items) {
@@ -92,6 +98,8 @@
 - (void)_pushWithPresentCard {
     WLTrasitionPresentCardAnimator *animator = [WLTrasitionPresentCardAnimator new];
     ViewController2 *viewController = [ViewController2 loadFromNib];
+    viewController.statusBarStyle = UIStatusBarStyleLightContent;
+    viewController.modalPresentationCapturesStatusBarAppearance = YES;
     viewController.modalPresentationStyle = UIModalPresentationCustom;
     [self.navigationController wlt_presentViewController:viewController withTransitionAnimator:animator completion:^{
         

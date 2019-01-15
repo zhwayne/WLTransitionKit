@@ -40,8 +40,8 @@
     if (self.operation == WLTransitionOperationComeOver) {
         if ([self.animator respondsToSelector:@selector(frameOfPresentedViewInContainerView:)]) {
             CGRect frame = [self.animator frameOfPresentedViewInContainerView:context.containerView];
-            context.toViewController.preferredContentSize = frame.size;
             context.toView.frame = frame;
+            context.toViewController.preferredContentSize = frame.size;
         }
         context.didEndTransition = self.didEndComeOverTransition;
         [self.animator comeOverAnimationWillBegin:context];
