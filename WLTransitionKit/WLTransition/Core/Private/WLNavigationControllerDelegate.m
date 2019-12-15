@@ -39,12 +39,12 @@
 {    
     if (operation == UINavigationControllerOperationPush) {
         
-        self.transition.operation = WLTransitionOperationComeOver;
+        self.transition.operation = WLTransitionOperationAppear;
         if (![self.transition.animator respondsToSelector:@selector(comeOverAnimationWillBegin:)]) {
             return nil;
         }
     } else {
-        self.transition.operation = WLTransitionOperationGoBack;
+        self.transition.operation = WLTransitionOperationDisappear;
         if (![self.transition.animator respondsToSelector:@selector(goBackAnimationWillBegin:)]) {
             return nil;
         }
@@ -58,7 +58,7 @@
         return nil;
     }
     
-    if (self.transition.operation == WLTransitionOperationComeOver) {
+    if (self.transition.operation == WLTransitionOperationAppear) {
         return nil;
     }
     

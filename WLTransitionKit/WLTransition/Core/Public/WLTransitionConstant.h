@@ -15,12 +15,12 @@
 /**
  Operation for transition.
  
- - WLTransitionOperationComeOver: Show next view controller.
- - WLTransitionOperationGoBack: Go back to the previous view controller.
+ - WLTransitionOperationAppear: Show next view controller.
+ - WLTransitionOperationDisappear: Go back to the previous view controller.
  */
 typedef NS_ENUM(NSUInteger, WLTransitionOperation) {
-    WLTransitionOperationComeOver,
-    WLTransitionOperationGoBack,
+    WLTransitionOperationAppear,
+    WLTransitionOperationDisappear,
 } NS_ENUM_AVAILABLE_IOS(8_0);
 
 #endif /* WLTransitionConstant_h */

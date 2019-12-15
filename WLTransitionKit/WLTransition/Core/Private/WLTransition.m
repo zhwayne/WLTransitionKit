@@ -37,7 +37,7 @@
     WLTransitionContext *context = [[WLTransitionContext alloc] initWithTransition:transitionContext];
     context.duration = self.animator.duration;
     
-    if (self.operation == WLTransitionOperationComeOver) {
+    if (self.operation == WLTransitionOperationAppear) {
         if ([self.animator respondsToSelector:@selector(frameOfPresentedViewInContainerView:)]) {
             CGRect frame = [self.animator frameOfPresentedViewInContainerView:context.containerView];
             context.toView.frame = frame;
@@ -67,7 +67,7 @@
 - (void)_addScreenEdgePanGestureRecognizerIfNeededWithContext:(WLTransitionContext *)context {
     
     BOOL presented = context.fromViewController.presentedViewController == context.toViewController;
-    self.interactive.operation = WLTransitionOperationGoBack;
+    self.interactive.operation = WLTransitionOperationDisappear;
     self.interactive.goBackAction = ^{
         if (presented) {
             [context.toViewController dismissViewControllerAnimated:YES completion:nil];
@@ -76,7 +76,7 @@
         }
     };
     
-    if (!context.toViewController.wlt_disableGoBackInteractive) {
+    if (!context.toViewController.wlt_interactivePopDisabled) {
         [self.interactive attachGestureToView:context.toView];
     }
 }

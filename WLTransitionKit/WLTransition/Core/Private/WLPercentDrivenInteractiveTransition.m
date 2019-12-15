@@ -45,6 +45,7 @@
             break;
             
         case UIGestureRecognizerStateChanged:
+            // FIXME: 两次  percent 相等时不调用
             [self updatePercent:_percent];
             break;
             
@@ -84,7 +85,7 @@
 
 - (void)beginPercentDriven {
     _isInteractive = YES;
-    if (_operation == WLTransitionOperationGoBack) {
+    if (_operation == WLTransitionOperationDisappear) {
         !_goBackAction ?: _goBackAction();
     }
 }

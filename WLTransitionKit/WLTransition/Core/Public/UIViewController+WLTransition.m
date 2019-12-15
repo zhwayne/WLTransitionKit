@@ -18,33 +18,17 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         
-        Method viewDidAppear = class_getInstanceMethod(self.class, @selector(viewDidAppear:));
-        Method wlt_viewDidAppear = class_getInstanceMethod(self.class, @selector(wlt_viewDidAppear:));
-        method_exchangeImplementations(viewDidAppear, wlt_viewDidAppear);
-        
         Method dismissViewControllerAnimated_completion = class_getInstanceMethod(self.class, @selector(dismissViewControllerAnimated:completion:));
         Method wlt_dismissViewControllerAnimated_completion = class_getInstanceMethod(self.class, @selector(wlt_dismissViewControllerAnimated:completion:));
         method_exchangeImplementations(dismissViewControllerAnimated_completion, wlt_dismissViewControllerAnimated_completion);
     });
 }
 
-- (void)wlt_viewDidAppear:(BOOL)animate {
-    [self wlt_viewDidAppear:animate];
-    
-    if (!self.presentingViewController && self.navigationController && self.navigationController == self.parentViewController) {
-        if (self.wlt_navDelegate) { // Push with animation.
-            self.navigationController.interactivePopGestureRecognizer.enabled = NO;
-        } else {
-            self.navigationController.interactivePopGestureRecognizer.enabled = !self.wlt_disableGoBackInteractive;
-        }
-    }
+- (void)setWlt_interactivePopDisabled:(BOOL)wlt_disableGoBackInteractive {
+    objc_setAssociatedObject(self, @selector(wlt_interactivePopDisabled), @(wlt_disableGoBackInteractive), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (void)setWlt_disableGoBackInteractive:(BOOL)wlt_disableGoBackInteractive {
-    objc_setAssociatedObject(self, @selector(wlt_disableGoBackInteractive), @(wlt_disableGoBackInteractive), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-}
-
-- (BOOL)wlt_disableGoBackInteractive {
+- (BOOL)wlt_interactivePopDisabled {
     return [objc_getAssociatedObject(self, _cmd) boolValue];
 }
 
@@ -54,7 +38,7 @@
     
     WLViewControllerTransitioningDelegate *traDelegate = [[WLViewControllerTransitioningDelegate alloc] init];
     traDelegate.transition.animator = animator;
-    traDelegate.transition.operation = WLTransitionOperationComeOver;
+    traDelegate.transition.operation = WLTransitionOperationAppear;
     viewControllerToPresent.wlt_traDelegate = traDelegate;
     
     viewControllerToPresent.transitioningDelegate = traDelegate;
@@ -64,7 +48,7 @@
 - (void)wlt_dismissViewControllerAnimated:(BOOL)flag completion:(void (^)(void))completion {
     __weak typeof(self) weakSelf = self;
     if (self.wlt_traDelegate) {
-        self.wlt_traDelegate.transition.operation = WLTransitionOperationGoBack;
+        self.wlt_traDelegate.transition.operation = WLTransitionOperationDisappear;
         self.wlt_traDelegate.transition.didEndGoBackTransition = ^(BOOL wasCancelled) {
             if (!wasCancelled) {
                 weakSelf.wlt_traDelegate = nil;

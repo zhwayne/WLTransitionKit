@@ -13,7 +13,7 @@
 #import "WLTransitionAnimation.h"
 #import <objc/runtime.h>
 
-@interface UINavigationController ()
+@interface UINavigationController () <UIGestureRecognizerDelegate>
 
 @property (nonatomic) id<UINavigationControllerDelegate> wlt_originalDelegate;
 
@@ -69,7 +69,10 @@
 
     viewController.wlt_navDelegate = tempDelegate;
     self.delegate = viewController.wlt_navDelegate;
-    [self pushViewController:viewController animated:YES];
+    
+    if (![self.viewControllers containsObject:viewController]) {
+        [self pushViewController:viewController animated:YES];
+    }
 }
 
 - (void)wlt_pushViewController:(UIViewController *)viewController withTransitionAnimator:(id<WLTransitionAnimation>)animator {
@@ -78,6 +81,19 @@
 
 - (void)wlt_pushViewController:(UIViewController *)viewController animated:(BOOL)animated {
     if (![self.navigationController.viewControllers containsObject:viewController]) {;
+        // 部分代码来源于 https://github.com/forkingdog/FDFullscreenPopGesture
+        if (![self.interactivePopGestureRecognizer.view.gestureRecognizers containsObject:self.wlt_popGestureRecognizer]) {
+            
+            [self.interactivePopGestureRecognizer.view addGestureRecognizer:self.wlt_popGestureRecognizer];
+            
+            NSArray *internalTargets = [self.interactivePopGestureRecognizer valueForKey:@"targets"];
+            id internalTarget = [internalTargets.firstObject valueForKey:@"target"];
+            SEL internalAction = NSSelectorFromString(@"handleNavigationTransition:");
+            self.wlt_popGestureRecognizer.delegate = self;
+            [self.wlt_popGestureRecognizer addTarget:internalTarget action:internalAction];
+            
+            self.interactivePopGestureRecognizer.enabled = NO;
+        }
         [self wlt_pushViewController:viewController animated:animated];
     }
 }
@@ -105,6 +121,59 @@
     self.delegate = viewController.wlt_navDelegate;
     id res = [self wlt_popViewControllerAnimated:animated];
     return res;
+}
+
+#pragma mark - Gesture recognizer handler
+
+- (UIPanGestureRecognizer *)wlt_popGestureRecognizer {
+    UIPanGestureRecognizer *panGestureRecognizer = objc_getAssociatedObject(self, _cmd);
+    if (!panGestureRecognizer) {
+        panGestureRecognizer = [[UIPanGestureRecognizer alloc] init];
+        panGestureRecognizer.maximumNumberOfTouches = 1;
+        
+        objc_setAssociatedObject(self, _cmd, panGestureRecognizer, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    }
+    return panGestureRecognizer;
+}
+
+// 这部分大部分代码来源于 https://github.com/forkingdog/FDFullscreenPopGesture
+- (BOOL)gestureRecognizerShouldBegin:(UIPanGestureRecognizer *)gestureRecognizer
+{
+    // Ignore when no view controller is pushed into the navigation stack.
+    if (self.viewControllers.count <= 1) {
+        return NO;
+    }
+    
+    // Ignore when the active view controller doesn't allow interactive pop.
+    UIViewController *topViewController = self.viewControllers.lastObject;
+    if (topViewController.wlt_navDelegate) {
+        return NO;
+    }
+    if (topViewController.wlt_interactivePopDisabled) {
+        return NO;
+    }
+    
+    // Ignore when the beginning location is beyond max allowed initial distance to left edge.
+    CGPoint beginningLocation = [gestureRecognizer locationInView:gestureRecognizer.view];
+    CGFloat maxAllowedInitialDistance = 44;
+    if (maxAllowedInitialDistance > 0 && beginningLocation.x > maxAllowedInitialDistance) {
+        return NO;
+    }
+    
+    // Ignore pan gesture when the navigation controller is currently in transition.
+    if ([[self valueForKey:@"_isTransitioning"] boolValue]) {
+        return NO;
+    }
+    
+    // Prevent calling the handler when the gesture begins in an opposite direction.
+    CGPoint translation = [gestureRecognizer translationInView:gestureRecognizer.view];
+    BOOL isLeftToRight = [UIApplication sharedApplication].userInterfaceLayoutDirection == UIUserInterfaceLayoutDirectionLeftToRight;
+    CGFloat multiplier = isLeftToRight ? 1 : - 1;
+    if ((translation.x * multiplier) <= 0) {
+        return NO;
+    }
+    
+    return YES;
 }
 
 @end
