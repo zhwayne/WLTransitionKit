@@ -17,8 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) WLTransitionOperation operation;
 @property (nonatomic, readonly) WLPercentDrivenInteractiveTransition *interactive;
 
-@property (nonatomic, copy) void (^didEndComeOverTransition)(BOOL wasCancelled);
-@property (nonatomic, copy) void (^didEndGoBackTransition)(BOOL wasCancelled);
+@property (nonatomic, copy) void (^didEndAppearTransition)(BOOL wasCancelled);
+@property (nonatomic, copy) void (^didEndDisappearTransition)(BOOL wasCancelled);
 
 @end
 

@@ -20,10 +20,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @optional
 
-- (void)comeOverAnimationWillBegin:(WLTransitionContext *)context;
-- (void)goBackAnimationWillBegin:(WLTransitionContext *)context;
-
-- (CGRect)frameOfPresentedViewInContainerView:(UIView *)containerView;
+- (void)appearWithContext:(WLTransitionContext *)context;
+- (void)dissappearWithContext:(WLTransitionContext *)context;
 
 @end
 

@@ -11,19 +11,19 @@
 
 @implementation UIViewController (WLTPrivate)
 
-- (void)setWlt_navDelegate:(WLNavigationControllerDelegate *)wlt_navDelegate {
-    objc_setAssociatedObject(self, @selector(wlt_navDelegate), wlt_navDelegate, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+- (void)setWlt_navigationDelegate:(WLNavigationControllerDelegate *)wlt_navDelegate {
+    objc_setAssociatedObject(self, @selector(wlt_navigationDelegate), wlt_navDelegate, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (WLNavigationControllerDelegate *)wlt_navDelegate {
+- (WLNavigationControllerDelegate *)wlt_navigationDelegate {
     return objc_getAssociatedObject(self, _cmd);
 }
 
-- (void)setWlt_traDelegate:(WLViewControllerTransitioningDelegate *)wlt_traDelegate {
-    objc_setAssociatedObject(self, @selector(wlt_traDelegate), wlt_traDelegate, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+- (void)setWlt_transitionDelegate:(WLViewControllerTransitioningDelegate *)wlt_traDelegate {
+    objc_setAssociatedObject(self, @selector(wlt_transitionDelegate), wlt_traDelegate, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (WLViewControllerTransitioningDelegate *)wlt_traDelegate {
+- (WLViewControllerTransitioningDelegate *)wlt_transitionDelegate {
     return objc_getAssociatedObject(self, _cmd);
 }
 

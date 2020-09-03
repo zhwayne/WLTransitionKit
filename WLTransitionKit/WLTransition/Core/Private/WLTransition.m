@@ -38,37 +38,30 @@
     context.duration = self.animator.duration;
     
     if (self.operation == WLTransitionOperationAppear) {
-        if ([self.animator respondsToSelector:@selector(frameOfPresentedViewInContainerView:)]) {
-            CGRect frame = [self.animator frameOfPresentedViewInContainerView:context.containerView];
-            context.toView.frame = frame;
-            context.toViewController.preferredContentSize = frame.size;
-        }
-        context.didEndTransition = self.didEndComeOverTransition;
-        [self.animator comeOverAnimationWillBegin:context];
+        context.didEndTransition = self.didEndAppearTransition;
+        [self.animator appearWithContext:context];
         
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(context.duration + 0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             // Add pan gesture if needed.
             [self _addScreenEdgePanGestureRecognizerIfNeededWithContext:context];
         });
     } else {
-        context.didEndTransition = self.didEndGoBackTransition;
-        
-        // 
+        context.didEndTransition = self.didEndDisappearTransition;
         if (self.interactive.isInteractive) {
-            [self.animator goBackAnimationWillBegin:context];
+            [self.animator dissappearWithContext:context];
         } else {
             dispatch_async(dispatch_get_main_queue(), ^{
-                [self.animator goBackAnimationWillBegin:context];
+                [self.animator dissappearWithContext:context];
             });
         }
     }
 }
 
 - (void)_addScreenEdgePanGestureRecognizerIfNeededWithContext:(WLTransitionContext *)context {
-    
+    // FIXME: context 中的属性会全部为nil
     BOOL presented = context.fromViewController.presentedViewController == context.toViewController;
     self.interactive.operation = WLTransitionOperationDisappear;
-    self.interactive.goBackAction = ^{
+    self.interactive.disappearAction = ^{
         if (presented) {
             [context.toViewController dismissViewControllerAnimated:YES completion:nil];
         } else {

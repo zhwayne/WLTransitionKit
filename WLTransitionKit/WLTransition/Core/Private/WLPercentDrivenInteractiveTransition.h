@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic) WLTransitionOperation operation;
 
-@property (nonatomic, copy) void (^goBackAction)(void);
+@property (nonatomic, copy) void (^disappearAction)(void);
 
 - (void)attachGestureToView:(UIView *)view;
 

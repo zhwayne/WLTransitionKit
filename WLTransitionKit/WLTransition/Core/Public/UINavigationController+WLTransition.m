@@ -56,7 +56,7 @@
     tempDelegate.transition.animator = animator;
     
     __weak typeof(self) weakSelf = self;
-    tempDelegate.transition.didEndComeOverTransition = ^(BOOL wasCancelled) {
+    tempDelegate.transition.didEndAppearTransition = ^(BOOL wasCancelled) {
         weakSelf.delegate = weakSelf.wlt_originalDelegate;
         weakSelf.wlt_originalDelegate = nil;
         
@@ -67,8 +67,8 @@
         }
     };
 
-    viewController.wlt_navDelegate = tempDelegate;
-    self.delegate = viewController.wlt_navDelegate;
+    viewController.wlt_navigationDelegate = tempDelegate;
+    self.delegate = viewController.wlt_navigationDelegate;
     
     if (![self.viewControllers containsObject:viewController]) {
         [self pushViewController:viewController animated:YES];
@@ -100,7 +100,7 @@
 
 - (UIViewController *)wlt_popViewControllerAnimated:(BOOL)animated {
     __weak UIViewController *viewController = self.viewControllers.lastObject;
-    if (viewController.wlt_navDelegate == nil) {
+    if (viewController.wlt_navigationDelegate == nil) {
         return [self wlt_popViewControllerAnimated:animated];
     }
 
@@ -109,16 +109,16 @@
     }
 
     __weak typeof(self) weakSelf = self;
-    viewController.wlt_navDelegate.transition.didEndGoBackTransition = ^(BOOL wasCancelled) {
+    viewController.wlt_navigationDelegate.transition.didEndDisappearTransition = ^(BOOL wasCancelled) {
         weakSelf.delegate = weakSelf.wlt_originalDelegate;
         if (!wasCancelled) {
-            weakSelf.wlt_navDelegate = nil;
+            weakSelf.wlt_navigationDelegate = nil;
             weakSelf.wlt_originalDelegate = nil;
-            viewController.wlt_navDelegate = nil;
+            viewController.wlt_navigationDelegate = nil;
         }
     };
     
-    self.delegate = viewController.wlt_navDelegate;
+    self.delegate = viewController.wlt_navigationDelegate;
     id res = [self wlt_popViewControllerAnimated:animated];
     return res;
 }
@@ -136,7 +136,7 @@
     return panGestureRecognizer;
 }
 
-// 这部分大部分代码来源于 https://github.com/forkingdog/FDFullscreenPopGesture
+// 这部分代码改写自 https://github.com/forkingdog/FDFullscreenPopGesture
 - (BOOL)gestureRecognizerShouldBegin:(UIPanGestureRecognizer *)gestureRecognizer
 {
     // Ignore when no view controller is pushed into the navigation stack.
@@ -146,7 +146,7 @@
     
     // Ignore when the active view controller doesn't allow interactive pop.
     UIViewController *topViewController = self.viewControllers.lastObject;
-    if (topViewController.wlt_navDelegate) {
+    if (topViewController.wlt_navigationDelegate) {
         return NO;
     }
     if (topViewController.wlt_interactivePopDisabled) {
@@ -169,7 +169,7 @@
     CGPoint translation = [gestureRecognizer translationInView:gestureRecognizer.view];
     BOOL isLeftToRight = [UIApplication sharedApplication].userInterfaceLayoutDirection == UIUserInterfaceLayoutDirectionLeftToRight;
     CGFloat multiplier = isLeftToRight ? 1 : - 1;
-    if ((translation.x * multiplier) <= 0) {
+    if ((translation.x * multiplier) < 0) {
         return NO;
     }
     

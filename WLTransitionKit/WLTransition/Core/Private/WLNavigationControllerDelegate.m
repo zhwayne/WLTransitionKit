@@ -38,14 +38,13 @@
                                                  toViewController:(UIViewController *)toVC
 {    
     if (operation == UINavigationControllerOperationPush) {
-        
         self.transition.operation = WLTransitionOperationAppear;
-        if (![self.transition.animator respondsToSelector:@selector(comeOverAnimationWillBegin:)]) {
+        if (![self.transition.animator respondsToSelector:@selector(appearWithContext:)]) {
             return nil;
         }
     } else {
         self.transition.operation = WLTransitionOperationDisappear;
-        if (![self.transition.animator respondsToSelector:@selector(goBackAnimationWillBegin:)]) {
+        if (![self.transition.animator respondsToSelector:@selector(dissappearWithContext:)]) {
             return nil;
         }
     }
@@ -58,7 +57,7 @@
         return nil;
     }
     
-    if (self.transition.operation == WLTransitionOperationAppear) {
+    if (self.transition.operation != WLTransitionOperationDisappear) {
         return nil;
     }
     

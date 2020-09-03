@@ -12,7 +12,7 @@
 
 @interface UIViewController (WLTPrivate)
 
-@property (nonatomic) WLNavigationControllerDelegate *wlt_navDelegate;
-@property (nonatomic) WLViewControllerTransitioningDelegate *wlt_traDelegate;
+@property (nonatomic, nullable) WLNavigationControllerDelegate *wlt_navigationDelegate;
+@property (nonatomic, nullable) WLViewControllerTransitioningDelegate *wlt_transitionDelegate;
 
 @end

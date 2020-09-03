@@ -26,10 +26,14 @@
 #endif
 
 - (void)attachGestureToView:(UIView *)view {
-    _pan = [[UIScreenEdgePanGestureRecognizer alloc] initWithTarget:self action:@selector(_handlePan:)];
-
-    _pan.edges = UIRectEdgeLeft;
-    _pan.delegate = self;
+    if (!_pan) {
+        _pan = [[UIScreenEdgePanGestureRecognizer alloc] initWithTarget:self action:@selector(_handlePan:)];
+        _pan.edges = UIRectEdgeLeft;
+        _pan.delegate = self;
+    }
+    if (_pan.view != view) {
+        [_pan.view removeGestureRecognizer:_pan];
+    }
     [view addGestureRecognizer:_pan];
 }
 
@@ -71,6 +75,7 @@
         [self finishInteractiveTransition];
         [displayLink invalidate];
         _displayLink = nil;
+        [_pan.view removeGestureRecognizer:_pan];
         return;
     }
     
@@ -86,7 +91,7 @@
 - (void)beginPercentDriven {
     _isInteractive = YES;
     if (_operation == WLTransitionOperationDisappear) {
-        !_goBackAction ?: _goBackAction();
+        !_disappearAction ?: _disappearAction();
     }
 }
 

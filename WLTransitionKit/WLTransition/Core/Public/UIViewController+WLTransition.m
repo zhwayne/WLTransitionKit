@@ -25,7 +25,10 @@
 }
 
 - (void)setWlt_interactivePopDisabled:(BOOL)wlt_disableGoBackInteractive {
-    objc_setAssociatedObject(self, @selector(wlt_interactivePopDisabled), @(wlt_disableGoBackInteractive), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self,
+                             @selector(wlt_interactivePopDisabled),
+                             @(wlt_disableGoBackInteractive),
+                             OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 - (BOOL)wlt_interactivePopDisabled {
@@ -39,7 +42,7 @@
     WLViewControllerTransitioningDelegate *traDelegate = [[WLViewControllerTransitioningDelegate alloc] init];
     traDelegate.transition.animator = animator;
     traDelegate.transition.operation = WLTransitionOperationAppear;
-    viewControllerToPresent.wlt_traDelegate = traDelegate;
+    viewControllerToPresent.wlt_transitionDelegate = traDelegate;
     
     viewControllerToPresent.transitioningDelegate = traDelegate;
     [self presentViewController:viewControllerToPresent animated:YES completion:completion];
@@ -47,14 +50,14 @@
 
 - (void)wlt_dismissViewControllerAnimated:(BOOL)flag completion:(void (^)(void))completion {
     __weak typeof(self) weakSelf = self;
-    if (self.wlt_traDelegate) {
-        self.wlt_traDelegate.transition.operation = WLTransitionOperationDisappear;
-        self.wlt_traDelegate.transition.didEndGoBackTransition = ^(BOOL wasCancelled) {
+    if (self.wlt_transitionDelegate) {
+        self.wlt_transitionDelegate.transition.operation = WLTransitionOperationDisappear;
+        self.wlt_transitionDelegate.transition.didEndDisappearTransition = ^(BOOL wasCancelled) {
             if (!wasCancelled) {
-                weakSelf.wlt_traDelegate = nil;
+                weakSelf.wlt_transitionDelegate = nil;
             }
         };
-        self.transitioningDelegate = self.wlt_traDelegate;
+        self.transitioningDelegate = self.wlt_transitionDelegate;
     }
     [self wlt_dismissViewControllerAnimated:flag completion:completion];
 }
@@ -65,26 +68,26 @@
 @implementation UIViewController (WLTGoBackPercentDriven)
 
 - (void)wlt_beginInteractiveTransition {
-    if (self.wlt_navDelegate) {
-        [self.wlt_navDelegate.transition.interactive beginPercentDriven];
-    } else if (self.wlt_traDelegate) {
-        [self.wlt_traDelegate.transition.interactive beginPercentDriven];
+    if (self.wlt_navigationDelegate) {
+        [self.wlt_navigationDelegate.transition.interactive beginPercentDriven];
+    } else if (self.wlt_transitionDelegate) {
+        [self.wlt_transitionDelegate.transition.interactive beginPercentDriven];
     }
 }
 
 - (void)wlt_updateInteractiveTransition:(CGFloat)percent {
-    if (self.wlt_navDelegate) {
-        [self.wlt_navDelegate.transition.interactive updatePercent:percent];
-    } else if (self.wlt_traDelegate) {
-        [self.wlt_traDelegate.transition.interactive updatePercent:percent];
+    if (self.wlt_navigationDelegate) {
+        [self.wlt_navigationDelegate.transition.interactive updatePercent:percent];
+    } else if (self.wlt_transitionDelegate) {
+        [self.wlt_transitionDelegate.transition.interactive updatePercent:percent];
     }
 }
 
 - (void)wlt_endInteractiveTransition {
-    if (self.wlt_navDelegate) {
-        [self.wlt_navDelegate.transition.interactive endPercentDriven];
-    } else if (self.wlt_traDelegate) {
-        [self.wlt_traDelegate.transition.interactive endPercentDriven];
+    if (self.wlt_navigationDelegate) {
+        [self.wlt_navigationDelegate.transition.interactive endPercentDriven];
+    } else if (self.wlt_transitionDelegate) {
+        [self.wlt_transitionDelegate.transition.interactive endPercentDriven];
     }
 }
 

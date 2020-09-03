@@ -20,7 +20,7 @@
     return 1;
 }
 
-- (void)comeOverAnimationWillBegin:(WLTransitionContext *)context {
+- (void)appearWithContext:(WLTransitionContext *)context {
     
     context.fromView.layer.doubleSided = NO;
     context.toView.layer.doubleSided = NO;
@@ -49,7 +49,7 @@
                      }];
 }
 
-- (void)goBackAnimationWillBegin:(WLTransitionContext *)context {
+- (void)dissappearWithContext:(WLTransitionContext *)context {
     
     context.fromView.layer.doubleSided = NO;
     context.toView.layer.doubleSided = NO;

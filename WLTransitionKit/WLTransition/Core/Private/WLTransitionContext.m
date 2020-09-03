@@ -11,7 +11,7 @@
 
 @interface WLTransitionContext ()
 
-@property (nonatomic, weak) id<UIViewControllerContextTransitioning>transition;
+@property (nonatomic, strong) id<UIViewControllerContextTransitioning>transition;
 
 @end
 
@@ -24,20 +24,11 @@
 }
 #endif
 
-- (BOOL)wasCancelled {
-    return _transition.transitionWasCancelled;
-}
-
 - (instancetype)initWithTransition:(id<UIViewControllerContextTransitioning>)transition
 {
     self = [super init];
     if (self) {
         _transition = transition;
-        _fromViewController = [transition viewControllerForKey:UITransitionContextFromViewControllerKey];
-        _toViewController = [transition viewControllerForKey:UITransitionContextToViewControllerKey];
-        _fromView = [transition viewForKey:UITransitionContextFromViewKey] ?: _fromViewController.view;
-        _toView = [transition viewForKey:UITransitionContextToViewKey] ?: _toViewController.view;
-        _containerView = [transition containerView];
     }
     return self;
 }
@@ -52,6 +43,38 @@
         _didEndTransition(wasCancelled);
         if (!self.wasCancelled) { _didEndTransition = nil; }
     }
+}
+
+- (UIViewController *)fromViewController {
+    return [_transition viewControllerForKey:UITransitionContextFromViewControllerKey];
+}
+
+- (UIViewController *)toViewController {
+    return [_transition viewControllerForKey:UITransitionContextToViewControllerKey];
+}
+
+- (UIView *)fromView {
+    return [_transition viewForKey:UITransitionContextFromViewKey] ?: self.fromViewController.view;
+}
+
+- (UIView *)toView {
+    return [_transition viewForKey:UITransitionContextToViewKey] ?: self.toViewController.view;
+}
+
+- (UIView *)containerView {
+    return [_transition containerView];
+}
+
+- (BOOL)wasCancelled {
+    return _transition.transitionWasCancelled;
+}
+
+- (CGRect)initialFrameForViewController:(UIViewController *)vc {
+    return [_transition initialFrameForViewController:vc];
+}
+
+- (CGRect)finalFrameForViewController:(UIViewController *)vc {
+    return [_transition finalFrameForViewController:vc];
 }
 
 @end

@@ -166,20 +166,20 @@
 		B049CC2A21B2754400E62058 /* Private */ = {
 			isa = PBXGroup;
 			children = (
-				B00ED92521B212640029A673 /* WLTransitionContext.h */,
-				B00ED91A21B212640029A673 /* WLTransitionContext.m */,
 				B049CC2B21B275D700E62058 /* UIViewController+WLTPrivate.h */,
 				B049CC2C21B275D700E62058 /* UIViewController+WLTPrivate.m */,
 				B00ED92121B212640029A673 /* WLNavigationControllerDelegate.h */,
 				B00ED91921B212640029A673 /* WLNavigationControllerDelegate.m */,
-				B00ED93A21B255A20029A673 /* WLViewControllerTransitioningDelegate.h */,
-				B00ED93B21B255A20029A673 /* WLViewControllerTransitioningDelegate.m */,
 				B00ED92021B212640029A673 /* WLPercentDrivenInteractiveTransition.h */,
 				B00ED92721B212640029A673 /* WLPercentDrivenInteractiveTransition.m */,
 				B00ED92621B212640029A673 /* WLTransition.h */,
 				B00ED91E21B212640029A673 /* WLTransition.m */,
 				B00ED91D21B212640029A673 /* WLTransition+Private.h */,
+				B00ED92521B212640029A673 /* WLTransitionContext.h */,
+				B00ED91A21B212640029A673 /* WLTransitionContext.m */,
 				B00ED92221B212640029A673 /* WLTransitionContext+Private.h */,
+				B00ED93A21B255A20029A673 /* WLViewControllerTransitioningDelegate.h */,
+				B00ED93B21B255A20029A673 /* WLViewControllerTransitioningDelegate.m */,
 			);
 			path = Private;
 			sourceTree = "<group>";
@@ -432,7 +432,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = BS4TL98W43;
+				DEVELOPMENT_TEAM = 9D3PCU7VQ2;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -454,7 +454,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = BS4TL98W43;
+				DEVELOPMENT_TEAM = 9D3PCU7VQ2;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
