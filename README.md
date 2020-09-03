@@ -23,7 +23,7 @@ If we want a flip transition animation, we can create an object and then impleme
     return 1;
 }
 
-- (void)comeOverAnimationWillBegin:(WLTransitionContext *)context {
+- (void)appearWithContext:(WLTransitionContext *)context {
     
     context.fromView.layer.doubleSided = NO;
     context.toView.layer.doubleSided = NO;
@@ -50,7 +50,7 @@ If we want a flip transition animation, we can create an object and then impleme
                      }];
 }
 
-- (void)goBackAnimationWillBegin:(WLTransitionContext *)context {
+- (void)disappearWithContext:(WLTransitionContext *)context {
     ...
 }
 
